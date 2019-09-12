@@ -28,17 +28,7 @@ public class Character : MonoBehaviour
     //Assigns a random name to the character
     public void AssignRandomName()
     {
-        string currentName = _name;
-        int maxIndex = _nameCandidates.Length;
-        string newName = currentName;
-
-        while (newName == currentName)
-        {
-            newName = _nameCandidates[Random.Range(0, maxIndex)];
-        }
-        //Randomization part to be truly implemented later
-
-        _name = newName;
-        Set3dName(newName);
+        //_name = newName;          //Pass a struct or class so values can be stored separately
+        Set3dName(GlobalManager.instance.GetRandomName());
     }
 }
