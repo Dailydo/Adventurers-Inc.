@@ -14,7 +14,10 @@ public class CharacterBody : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit) && (hit.transform.tag == "Character"))
             {
-                transform.parent.GetComponent<Character>().AssignRandomName();
+                Character characterScript = transform.parent.GetComponent<Character>();
+                characterScript.GenerateCharacter();
+                characterScript.UpdateCharacterCard();
+
             }
         }
     }

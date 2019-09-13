@@ -1,34 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Character : MonoBehaviour
 {
-    public string _name = "John Doe";       //Character's name
-    public string[] _nameCandidates;
+    //Character key attributes
+    public Characters.Gender _gender;
+    public string _name = null;
+    public string _title = null;
+    public Characters.Race _race;
+    public Characters.Class _class;
+    public int _level = 0;
 
-    private TextMeshPro _3dText;            //Reference to the TextMeshPro script in the 3dName game object
+    private CharacterCard _characterCard;          //Reference to the characterCard displaying the character's information
 
 
     void Awake()
     {
-        _3dText = transform.Find("3dName").GetComponent<TextMeshPro>();
-        Set3dName(_name);
+        _characterCard = transform.Find("CharacterCard").GetComponent<CharacterCard>();
     }
 
-
-    //Sets the character name (variable + 3d display) on "newName"
-    void Set3dName (string newName)
+    //Update the characterCard with current values
+    public void UpdateCharacterCard()
     {
-        _name = newName;
-        _3dText.text = newName;
+        _characterCard.UpdateCardValues(_name, _title, _race, _class, _level);
     }
 
-    //Assigns a random name to the character
-    public void AssignRandomName()
+    //Generates a character with randomized traits
+    public void GenerateCharacter()
     {
-        //_name = newName;          //Pass a struct or class so values can be stored separately
-        Set3dName(GlobalManager.instance.GetRandomName());
+        _gender = Characters.instance.GetRandomGender();
+        _name = Characters.instance.GetRandomName(_gender);
+        _race = Characters.instance.GetRandomRace();
+        _class = Characters.instance.GetRandomClass();
+        _level = 1;
+        _title = Characters.instance.GetRandomTitle();
     }
 }
