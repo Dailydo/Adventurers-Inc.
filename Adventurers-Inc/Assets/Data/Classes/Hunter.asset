@@ -13,16 +13,40 @@ MonoBehaviour:
   m_Name: Hunter
   m_EditorClassIdentifier: 
   _class: 4
-  _levellingInfos:
-    referenceLevel: 0
-    experienceToNextLevel: 0
-    minHP: 1
-    maxHP: 4
-    minStrength: 0
-    maxStrength: 2
-    minDexterity: 1
-    maxDexterity: 4
-    minIntelligence: -2
-    maxIntelligence: 1
-    minCharisma: -2
-    maxCharisma: 1
+  _levellingInfo:
+  - referenceLevel: 1
+    experienceToNextLevel: 100
+    minHP: 4
+    maxHP: 6
+    minStrength: 3
+    maxStrength: 5
+    minDexterity: 5
+    maxDexterity: 7
+    minIntelligence: 2
+    maxIntelligence: 4
+    minCharisma: 1
+    maxCharisma: 3
+  - referenceLevel: 2
+    experienceToNextLevel: 250
+    minHP: 4
+    maxHP: 6
+    minStrength: 3
+    maxStrength: 5
+    minDexterity: 5
+    maxDexterity: 7
+    minIntelligence: 2
+    maxIntelligence: 4
+    minCharisma: 1
+    maxCharisma: 3
+  - referenceLevel: 3
+    experienceToNextLevel: 500
+    minHP: 4
+    maxHP: 6
+    minStrength: 3
+    maxStrength: 5
+    minDexterity: 5
+    maxDexterity: 7
+    minIntelligence: 2
+    maxIntelligence: 4
+    minCharisma: 1
+    maxCharisma: 3

@@ -13,16 +13,40 @@ MonoBehaviour:
   m_Name: Rogue
   m_EditorClassIdentifier: 
   _class: 3
-  _levellingInfos:
-    referenceLevel: 0
-    experienceToNextLevel: 0
-    minHP: -1
-    maxHP: 1
-    minStrength: -2
-    maxStrength: 1
-    minDexterity: 2
-    maxDexterity: 4
-    minIntelligence: 0
-    maxIntelligence: 2
+  _levellingInfo:
+  - referenceLevel: 1
+    experienceToNextLevel: 100
+    minHP: 3
+    maxHP: 5
+    minStrength: 2
+    maxStrength: 4
+    minDexterity: 4
+    maxDexterity: 6
+    minIntelligence: 2
+    maxIntelligence: 4
+    minCharisma: 1
+    maxCharisma: 3
+  - referenceLevel: 2
+    experienceToNextLevel: 250
+    minHP: 3
+    maxHP: 5
+    minStrength: 2
+    maxStrength: 4
+    minDexterity: 4
+    maxDexterity: 6
+    minIntelligence: 2
+    maxIntelligence: 4
+    minCharisma: 1
+    maxCharisma: 3
+  - referenceLevel: 3
+    experienceToNextLevel: 500
+    minHP: 3
+    maxHP: 5
+    minStrength: 2
+    maxStrength: 4
+    minDexterity: 4
+    maxDexterity: 6
+    minIntelligence: 2
+    maxIntelligence: 4
     minCharisma: 1
     maxCharisma: 3

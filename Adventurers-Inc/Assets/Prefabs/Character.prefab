@@ -2515,9 +2515,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4748811380290618891}
-  m_LocalRotation: {x: 0.32111958, y: -0, z: -0, w: 0.9470387}
-  m_LocalPosition: {x: 2.24, y: 0.43, z: 0.28}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 3, y: 1, z: -1.5}
+  m_LocalScale: {x: 1.35, y: 1.35, z: 1.35}
   m_Children:
   - {fileID: 4585549913836320011}
   - {fileID: 164131286798369729}
@@ -2525,7 +2525,7 @@ Transform:
   - {fileID: 2430563470829393626}
   m_Father: {fileID: 6014056513002767556}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 37.461002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &7105013611421497402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3476,18 +3476,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gender: 0
-  _name: Default
+  _name: 
   _title: 
   _race: 0
   _class: 0
   _level: 0
   _currentXP: 0
-  _maxHP: 1
-  _currentHP: 1
-  _strength: -1
-  _dexterity: -1
-  _intelligence: -1
-  _charisma: -1
+  _maxHP: 0
+  _currentHP: 0
+  _strength: 0
+  _dexterity: 0
+  _intelligence: 0
+  _charisma: 0
 --- !u!1 &6225312035690114820
 GameObject:
   m_ObjectHideFlags: 0

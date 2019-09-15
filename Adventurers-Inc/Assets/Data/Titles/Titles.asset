@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e86de0fd1c1a24ea7d32621803444d, type: 3}
+  m_Name: Titles
+  m_EditorClassIdentifier: 
+  _titles:
+  - the Tentacle
+  - the Parasite
+  - the Well-informed
+  - the Well-endowed
+  - the Well-connected
+  - the Well-mannered
+  - the Ferocious
+  - the Ambiguous
+  - the Salacious
+  - the Loner
+  - the First
+  - the Second
+  - the Third
+  - the Last
+  - the Late
+  - the Crab-eater
+  - the Oyster
+  - the Smelly One
+  - the Chosen One
+  - the Crippled
+  - the Bad Friend
+  - the Solitary
+  - the Distant Relative
+  - the Old Fart
+  - the Flatulent
+  - the Nauseous
+  - the Deaf
+  - the Bald
+  - the Blind
+  - the Easterner
+  - the Player
+  - the Loser
+  - the Humble
+  - the Destroyer
+  - the Unwise
+  - the Magnificent
+  - the Light-hearted
+  - the Muffin-man
+  - the Worm
+  - the Fancy
+  - the Charmer
+  - the Gardener
+  - the Hair-dresser
+  - the Starving
+  - the Thinker

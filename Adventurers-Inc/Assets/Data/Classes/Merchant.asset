@@ -13,16 +13,40 @@ MonoBehaviour:
   m_Name: Merchant
   m_EditorClassIdentifier: 
   _class: 7
-  _levellingInfos:
-    referenceLevel: 0
-    experienceToNextLevel: 0
-    minHP: -2
-    maxHP: 2
-    minStrength: -2
-    maxStrength: 2
-    minDexterity: -1
-    maxDexterity: 0
-    minIntelligence: 1
-    maxIntelligence: 4
-    minCharisma: 2
-    maxCharisma: 5
+  _levellingInfo:
+  - referenceLevel: 1
+    experienceToNextLevel: 100
+    minHP: 4
+    maxHP: 6
+    minStrength: 2
+    maxStrength: 4
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 3
+    maxIntelligence: 5
+    minCharisma: 4
+    maxCharisma: 6
+  - referenceLevel: 2
+    experienceToNextLevel: 250
+    minHP: 4
+    maxHP: 6
+    minStrength: 2
+    maxStrength: 4
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 3
+    maxIntelligence: 5
+    minCharisma: 4
+    maxCharisma: 6
+  - referenceLevel: 3
+    experienceToNextLevel: 500
+    minHP: 4
+    maxHP: 6
+    minStrength: 2
+    maxStrength: 4
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 3
+    maxIntelligence: 5
+    minCharisma: 4
+    maxCharisma: 6

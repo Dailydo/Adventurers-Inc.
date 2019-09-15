@@ -44,11 +44,11 @@ public class Characters : MonoBehaviour
     }
 
     public enum Gender { Unset, Male, Female, Neutral };
-    public enum Race { Unset, Human, Dwarf, Elve, Orc, Halfling, Troll, StonePerson };
+    public enum Race { Unset, Human, Dwarf, Elf, Orc, Halfling, Troll, StonePerson };
     public enum Class { Unset, Warrior, Mage, Rogue, Hunter, Gunslinger, Paladin, Merchant, Seer };
 
-    public SO_RaceInformation[] _races;           //References the races available for character generation
-    public string[] _titles;
+    public SO_Race[] _races;           //References the races available for character generation
+    public SO_Titles _titlesContainer;
     //Add gameplay traits at some point...
 
 
@@ -66,9 +66,8 @@ public class Characters : MonoBehaviour
         CharacterInfo characterInfo = new CharacterInfo();
 
         //Reference key-generation data for comfort
-        SO_RaceInformation referenceRace = _races[Random.Range(0, _races.Length)];
-        SO_ClassInformation referenceClass = referenceRace._classes[Random.Range(0, referenceRace._classes.Length)];
-
+        SO_Race referenceRace = _races[Random.Range(0, _races.Length)];
+        SO_Class referenceClass = referenceRace._classes[Random.Range(0, referenceRace._classes.Length)];
 
         characterInfo.race = referenceRace._race;
         characterInfo.gender = referenceRace._genders[Random.Range(0, referenceRace._genders.Length)];
@@ -79,8 +78,8 @@ public class Characters : MonoBehaviour
         characterInfo.level = 1;
         
         //Set attributes by cumulating stats from Race and Class for level 1        //Could be later extracted as "Stats gain per level"
-        LevellingInfo raceLevellingInfo = referenceRace._levellingInfos[0];
-        LevellingInfo classLevellingInfo = referenceClass._levellingInfos;
+        LevellingInfo raceLevellingInfo = referenceRace._levellingInfo;
+        LevellingInfo classLevellingInfo = referenceClass._levellingInfo[0];
 
         characterInfo._maxHP = Random.Range(raceLevellingInfo.minHP, raceLevellingInfo.maxHP) + Random.Range(classLevellingInfo.minHP, classLevellingInfo.maxHP);
         characterInfo._strength = Random.Range(raceLevellingInfo.minStrength, raceLevellingInfo.maxStrength) + Random.Range(classLevellingInfo.minStrength, classLevellingInfo.maxStrength);
@@ -98,30 +97,28 @@ public class Characters : MonoBehaviour
         return characterInfo;
     }
 
-    //Returns a random name based on a Gender, within a RaceInformation data set
-    public string GetRandomName(Gender gender, SO_RaceInformation raceInfo)
+    //Returns a random name based on a Gender, within a RaceInfo data set
+    public string GetRandomName(Gender gender, SO_Race raceInfo)
     {
         string name;
 
         string[] list;      
-
         switch (gender)
         {
             case Gender.Female:
-                list = raceInfo._names.femaleNames;
+                list = raceInfo._names._femaleNames;
                 break;
             case Gender.Male:
-                list = raceInfo._names.maleNames;
+                list = raceInfo._names._maleNames;
                 break;
             case Gender.Neutral:
-                list = raceInfo._names.neutralNames;
+                list = raceInfo._names._neutralNames;
                 break;
             default:
                 list = new string[] { "Empty name" };
                 Debug.Log("Name assignation switch fell back on Default option");
                 break;
         }
-
         name = list[Random.Range(0, (list.Length))];
 
         return name;
@@ -130,7 +127,7 @@ public class Characters : MonoBehaviour
     //Returns a random title in the list _titles
     public string GetRandomTitle()
     {
-        string title = _titles[Random.Range(0, _titles.Length)];
+        string title = _titlesContainer._titles[Random.Range(0, _titlesContainer._titles.Length)];
         return title;
     }
 }

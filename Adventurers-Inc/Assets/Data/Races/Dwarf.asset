@@ -14,29 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _race: 2
   _genders: 0100000002000000
-  _names:
-    maleNames:
-    - Gimli
-    - Baldin
-    - Galin
-    femaleNames:
-    - Gurda
-    - Brala
-    - Lyra
-    neutralNames: []
+  _names: {fileID: 11400000, guid: 5cd24f81e6a7c834e9483e54814d6268, type: 2}
   _classes:
   - {fileID: 11400000, guid: e6482366efe6d254dbbd2b5bb2073333, type: 2}
   - {fileID: 11400000, guid: 1d0058b42613d5340aae51fe213c49c1, type: 2}
-  _levellingInfos:
-  - referenceLevel: 100
+  _levellingInfo:
+    referenceLevel: 0
     experienceToNextLevel: 0
     minHP: 10
-    maxHP: 14
-    minStrength: 6
-    maxStrength: 10
-    minDexterity: 4
+    maxHP: 12
+    minStrength: 5
+    maxStrength: 8
+    minDexterity: 3
     maxDexterity: 6
-    minIntelligence: 4
-    maxIntelligence: 8
-    minCharisma: 3
-    maxCharisma: 5
+    minIntelligence: 2
+    maxIntelligence: 5
+    minCharisma: 2
+    maxCharisma: 6

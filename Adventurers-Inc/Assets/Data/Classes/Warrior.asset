@@ -13,16 +13,40 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   _class: 1
-  _levellingInfos:
-    referenceLevel: 0
-    experienceToNextLevel: 0
-    minHP: 2
-    maxHP: 5
-    minStrength: 1
-    maxStrength: 4
-    minDexterity: -1
-    maxDexterity: 1
-    minIntelligence: -3
-    maxIntelligence: 0
-    minCharisma: -2
-    maxCharisma: 2
+  _levellingInfo:
+  - referenceLevel: 1
+    experienceToNextLevel: 100
+    minHP: 8
+    maxHP: 10
+    minStrength: 5
+    maxStrength: 7
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 1
+    maxIntelligence: 3
+    minCharisma: 2
+    maxCharisma: 4
+  - referenceLevel: 2
+    experienceToNextLevel: 250
+    minHP: 8
+    maxHP: 10
+    minStrength: 5
+    maxStrength: 7
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 1
+    maxIntelligence: 3
+    minCharisma: 2
+    maxCharisma: 4
+  - referenceLevel: 3
+    experienceToNextLevel: 500
+    minHP: 8
+    maxHP: 10
+    minStrength: 5
+    maxStrength: 7
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 1
+    maxIntelligence: 3
+    minCharisma: 2
+    maxCharisma: 4

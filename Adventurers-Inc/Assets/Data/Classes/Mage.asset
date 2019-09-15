@@ -13,16 +13,40 @@ MonoBehaviour:
   m_Name: Mage
   m_EditorClassIdentifier: 
   _class: 2
-  _levellingInfos:
-    referenceLevel: 0
-    experienceToNextLevel: 0
-    minHP: -4
-    maxHP: -1
-    minStrength: -4
-    maxStrength: -2
-    minDexterity: -2
-    maxDexterity: 1
-    minIntelligence: 3
-    maxIntelligence: 6
-    minCharisma: -2
-    maxCharisma: 3
+  _levellingInfo:
+  - referenceLevel: 1
+    experienceToNextLevel: 100
+    minHP: 2
+    maxHP: 4
+    minStrength: 1
+    maxStrength: 3
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 8
+    maxIntelligence: 10
+    minCharisma: 2
+    maxCharisma: 4
+  - referenceLevel: 2
+    experienceToNextLevel: 250
+    minHP: 2
+    maxHP: 4
+    minStrength: 1
+    maxStrength: 3
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 8
+    maxIntelligence: 10
+    minCharisma: 2
+    maxCharisma: 4
+  - referenceLevel: 3
+    experienceToNextLevel: 500
+    minHP: 2
+    maxHP: 4
+    minStrength: 1
+    maxStrength: 3
+    minDexterity: 2
+    maxDexterity: 4
+    minIntelligence: 8
+    maxIntelligence: 10
+    minCharisma: 2
+    maxCharisma: 4

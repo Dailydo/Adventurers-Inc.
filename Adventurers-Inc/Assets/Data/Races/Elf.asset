@@ -10,27 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c67f77ffdf7f72a4590418c498ad36fd, type: 3}
-  m_Name: Human
+  m_Name: Elf
   m_EditorClassIdentifier: 
-  _race: 1
-  _genders: 0100000002000000
-  _names: {fileID: 11400000, guid: 40da056185f3cf64c9f63a5281b4ae98, type: 2}
+  _race: 3
+  _genders: 010000000200000003000000
+  _names: {fileID: 11400000, guid: 9ac83aaccf58a214cb384525f4564785, type: 2}
   _classes:
-  - {fileID: 11400000, guid: e6482366efe6d254dbbd2b5bb2073333, type: 2}
+  - {fileID: 11400000, guid: e1b9aa7efdc9caa45b9cd9c06ad09ce3, type: 2}
   - {fileID: 11400000, guid: 48af3ffc70b5f384fb14489c0f887ee2, type: 2}
   - {fileID: 11400000, guid: 398750ba762b3f84e800562006bd94bf, type: 2}
-  - {fileID: 11400000, guid: e1b9aa7efdc9caa45b9cd9c06ad09ce3, type: 2}
-  - {fileID: 11400000, guid: 1d0058b42613d5340aae51fe213c49c1, type: 2}
   _levellingInfo:
     referenceLevel: 0
     experienceToNextLevel: 0
-    minHP: 8
-    maxHP: 10
-    minStrength: 4
-    maxStrength: 6
+    minHP: 5
+    maxHP: 7
+    minStrength: 3
+    maxStrength: 5
     minDexterity: 4
     maxDexterity: 6
     minIntelligence: 4
-    maxIntelligence: 6
+    maxIntelligence: 7
     minCharisma: 4
-    maxCharisma: 6
+    maxCharisma: 7
