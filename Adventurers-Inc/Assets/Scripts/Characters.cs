@@ -51,6 +51,8 @@ public class Characters : MonoBehaviour
     public SO_Titles _titlesContainer;
     //Add gameplay traits at some point...
 
+    public GameObject _characterCard_UI;
+
 
     public void Awake()
     {

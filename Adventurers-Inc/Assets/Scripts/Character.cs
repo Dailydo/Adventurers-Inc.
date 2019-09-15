@@ -53,5 +53,6 @@ public class Character : MonoBehaviour
     public void UpdateCharacterCard()
     {
         _characterCard.UpdateCardValues(this);
+        Characters.instance._characterCard_UI.GetComponent<CharacterCard_UI>().UpdateCardValues(this);
     }
 }
