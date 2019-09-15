@@ -12,6 +12,14 @@ public class Character : MonoBehaviour
     public Characters.Class _class;
     public int _level = 0;
 
+    public int _currentXP = 0;
+    public int _maxHP = 0;
+    public int _currentHP = 0;
+    public int _strength = 0;
+    public int _dexterity = 0;
+    public int _intelligence = 0;
+    public int _charisma = 0;
+
     private CharacterCard _characterCard;          //Reference to the characterCard displaying the character's information
 
 
@@ -20,20 +28,30 @@ public class Character : MonoBehaviour
         _characterCard = transform.Find("CharacterCard").GetComponent<CharacterCard>();
     }
 
-    //Update the characterCard with current values
-    public void UpdateCharacterCard()
-    {
-        _characterCard.UpdateCardValues(_name, _title, _race, _class, _level);
-    }
-
     //Generates a character with randomized traits
     public void GenerateCharacter()
     {
-        _gender = Characters.instance.GetRandomGender();
-        _name = Characters.instance.GetRandomName(_gender);
-        _race = Characters.instance.GetRandomRace();
-        _class = Characters.instance.GetRandomClass();
-        _level = 1;
-        _title = Characters.instance.GetRandomTitle();
+        Characters.CharacterInfo characterInfo = Characters.instance.GenerateRandomCharacterInfo();
+
+        _race = characterInfo.race;
+        _gender = characterInfo.gender;
+        _name = characterInfo.name;
+        _class = characterInfo.class_;
+        _title = characterInfo.title;
+
+        _level = characterInfo.level;
+
+        _maxHP = characterInfo._maxHP;
+        _currentHP = _maxHP;
+        _strength = characterInfo._strength;
+        _dexterity = characterInfo._dexterity;
+        _intelligence = characterInfo._intelligence;
+        _charisma = characterInfo._charisma;
+    }
+
+    //Update the characterCard with current values
+    public void UpdateCharacterCard()
+    {
+        _characterCard.UpdateCardValues(this);
     }
 }

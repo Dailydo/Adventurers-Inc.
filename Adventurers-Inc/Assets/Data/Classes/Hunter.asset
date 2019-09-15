@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6caf2cf9ea858940ad746f1cf82da02, type: 3}
+  m_Name: Hunter
+  m_EditorClassIdentifier: 
+  _class: 4
+  _levellingInfos:
+    referenceLevel: 0
+    experienceToNextLevel: 0
+    minHP: 1
+    maxHP: 4
+    minStrength: 0
+    maxStrength: 2
+    minDexterity: 1
+    maxDexterity: 4
+    minIntelligence: -2
+    maxIntelligence: 1
+    minCharisma: -2
+    maxCharisma: 1
