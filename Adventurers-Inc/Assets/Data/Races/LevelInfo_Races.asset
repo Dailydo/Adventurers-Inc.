@@ -19,6 +19,8 @@ MonoBehaviour:
     maxHP: 10
     minStrength: 3
     maxStrength: 5
+    minDexterity: 3
+    maxDexterity: 5
     minIntelligence: 3
     maxIntelligence: 5
     minCharisma: 3
@@ -30,6 +32,8 @@ MonoBehaviour:
     maxHP: 12
     minStrength: 5
     maxStrength: 7
+    minDexterity: 2
+    maxDexterity: 4
     minIntelligence: 2
     maxIntelligence: 4
     minCharisma: 2
@@ -41,6 +45,8 @@ MonoBehaviour:
     maxHP: 8
     minStrength: 2
     maxStrength: 4
+    minDexterity: 3
+    maxDexterity: 5
     minIntelligence: 4
     maxIntelligence: 6
     minCharisma: 3

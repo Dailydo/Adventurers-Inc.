@@ -9,22 +9,70 @@ public class Characters : MonoBehaviour
 
     //A struct containing leveling information
     [System.Serializable]
-    public struct LevelInfo
+    public class LevelInfo
     {
-        public int referenceLevel;          //Specify here the level to which the data refers to
-        public int XPThreshold;             //Amount of XP to reach to level up
+        public int _referenceLevel = -1;          //Specify here the level to which the data refers to
+        public int _XPThreshold = -1;             //Amount of XP to reach to level up
 
-        public int currentXP;
-        public int minHP;
-        public int maxHP;
-        public int minStrength;
-        public int maxStrength;
-        public int minDexterity;
-        public int maxDexterity;
-        public int minIntelligence;
-        public int maxIntelligence;
-        public int minCharisma;
-        public int maxCharisma;       
+        public int _currentXP = -1;
+        public int _minHP = -1;
+        public int _maxHP = -1;
+        public int _minStrength = -1;
+        public int _maxStrength = -1;
+        public int _minDexterity = -1;
+        public int _maxDexterity = -1;
+        public int _minIntelligence = -1;
+        public int _maxIntelligence = -1;
+        public int _minCharisma = -1;
+        public int _maxCharisma = -1;
+        
+        //Class constructor, created from a LevelInfoImporter item
+        public LevelInfo (LevelInfoImporter levelInfoImporter)
+        {
+            _referenceLevel = levelInfoImporter.referenceLevel;
+            _XPThreshold = levelInfoImporter.XPThreshold;
+            _currentXP = 0;
+            _minHP = levelInfoImporter.minHP;
+            _maxHP = levelInfoImporter.maxHP;
+            _minStrength = levelInfoImporter.minStrength;
+            _maxStrength = levelInfoImporter.maxStrength;
+            _minDexterity = levelInfoImporter.minDexterity;
+            _maxDexterity = levelInfoImporter.maxDexterity;
+            _minIntelligence = levelInfoImporter.minIntelligence;
+            _maxIntelligence = levelInfoImporter.maxIntelligence;
+            _minCharisma = levelInfoImporter.minCharisma;
+            _maxCharisma = levelInfoImporter.maxCharisma;
+        }
+
+        //Returns an HP value between _minHP and _maxHP
+        public int GetRandomizedHP()
+        {
+            return Random.Range(_minHP, _maxHP);
+        }
+
+        //Returns a strength value between _minStrength and _maxStrength
+        public int GetRandomizedStrength()
+        {
+            return Random.Range(_minStrength, _maxStrength);
+        }
+
+        //Returns a dexterity value between _minDexterity and _maxDexterity
+        public int GetRandomizedDexterity()
+        {
+            return Random.Range(_minDexterity, _maxDexterity);
+        }
+
+        //Returns a intelligence value between _minIntelligence and _maxIntelligence
+        public int GetRandomizedIntelligence()
+        {
+            return Random.Range(_minIntelligence, _maxIntelligence);
+        }
+
+        //Returns a charisma value between _minCharisma and _maxCharisma
+        public int GetRandomizedCharisma()
+        {
+            return Random.Range(_minCharisma, _maxCharisma);
+        }
     }
 
     public struct CharacterInfo         //Data package to be communicated to a character for initialization following generation
@@ -57,7 +105,6 @@ public class Characters : MonoBehaviour
     public GameObject _characterCard_UI;
 
 
-
     public void Awake()
     {
         //singleton definition
@@ -83,73 +130,94 @@ public class Characters : MonoBehaviour
 
         characterInfo.level = 1;
 
-        //LevelInfo raceLevelInfo = GetRaceLevelInfo(characterInfo.race);
+        //Collect levellingInfo for the race and class/level
+        LevelInfo raceLevelInfo = GetRaceLevelInfo(characterInfo.race);
+        LevelInfo classLevelInfo = GetClassLevelInfo(characterInfo.class_, 1);
 
-
-
-        //Set attributes by cumulating stats from Race and Class for level 1        //Could be later extracted as "Stats gain per level"
-
-        /*
-        LevellingInfo raceLevellingInfo = referenceRace._levellingInfo;
-        LevellingInfo classLevellingInfo = referenceClass._levellingInfo[0];
-
-        characterInfo._maxHP = Random.Range(raceLevellingInfo.minHP, raceLevellingInfo.maxHP) + Random.Range(classLevellingInfo.minHP, classLevellingInfo.maxHP);
-        characterInfo._strength = Random.Range(raceLevellingInfo.minStrength, raceLevellingInfo.maxStrength) + Random.Range(classLevellingInfo.minStrength, classLevellingInfo.maxStrength);
-        characterInfo._dexterity = Random.Range(raceLevellingInfo.minDexterity, raceLevellingInfo.maxDexterity) + Random.Range(classLevellingInfo.minDexterity, classLevellingInfo.maxDexterity);
-        characterInfo._intelligence = Random.Range(raceLevellingInfo.minIntelligence, raceLevellingInfo.maxIntelligence) + Random.Range(classLevellingInfo.minIntelligence, classLevellingInfo.maxIntelligence);
-        characterInfo._charisma = Random.Range(raceLevellingInfo.minCharisma, raceLevellingInfo.maxCharisma) + Random.Range(classLevellingInfo.minCharisma, classLevellingInfo.maxCharisma);
-
-        //Cap values so they are not negative
-        characterInfo._maxHP = (characterInfo._maxHP <= 0) ? 1 : characterInfo._maxHP;
-        characterInfo._strength = (characterInfo._strength <= 0) ? 1 : characterInfo._strength;
-        characterInfo._dexterity = (characterInfo._dexterity <= 0) ? 1 : characterInfo._dexterity;
-        characterInfo._intelligence = (characterInfo._intelligence <= 0) ? 1 : characterInfo._intelligence;
-        characterInfo._charisma = (characterInfo._charisma <= 0) ? 1 : characterInfo._charisma;
-        */
+        //Set attributes by cumulating level info stats, made at least positive
+        characterInfo._maxHP = EnsurePositiveValue(raceLevelInfo.GetRandomizedHP() + classLevelInfo.GetRandomizedHP());
+        characterInfo._strength = EnsurePositiveValue(raceLevelInfo.GetRandomizedStrength() + classLevelInfo.GetRandomizedStrength());
+        characterInfo._dexterity = EnsurePositiveValue(raceLevelInfo.GetRandomizedDexterity() + classLevelInfo.GetRandomizedDexterity());
+        characterInfo._intelligence = EnsurePositiveValue(raceLevelInfo.GetRandomizedIntelligence() + classLevelInfo.GetRandomizedIntelligence());
+        characterInfo._charisma = EnsurePositiveValue(raceLevelInfo.GetRandomizedCharisma() + classLevelInfo.GetRandomizedCharisma());
 
         return characterInfo;
     }
 
-    //Returns the LevelInfo struct corresponding to the specified race
+    //Returns the value or '1' if the value is inferior to 1
+    public int EnsurePositiveValue(int value)
+    {
+        int result = value;
+
+        if (value <= 0)
+            value = 1;
+
+        return result;
+    }
+
+    //Returns a LevelInfo class instance corresponding to the specified race
     public LevelInfo GetRaceLevelInfo(Race race)
     {
-        LevelInfo result = new LevelInfo();
-
-        //Values that needs to be initialized to 0 as they make no sense for in race
-        result.referenceLevel = 0;
-        result.XPThreshold = 0;
-        result.currentXP = 0;
-
         //Find the proper LevelInfoImporter based on the race
-        LevelInfoImporter_Races levelInfoContainer = new LevelInfoImporter_Races();
-
+        LevelInfoImporter levelInfoImporter = new LevelInfoImporter();
         switch (race)
         {
             case Race.Human:
-                levelInfoContainer = _racesLevelInfoContainer.human[0];     //Only one entry for human, levelling is set in classes
+                levelInfoImporter = _racesLevelInfoContainer.human[0];     //Only one entry for human, levelling is set in classes
                 break;
             case Race.Dwarf:
-                levelInfoContainer = _racesLevelInfoContainer.dwarf[0];
+                levelInfoImporter = _racesLevelInfoContainer.dwarf[0];
                 break;
             case Race.Elf:
-                levelInfoContainer = _racesLevelInfoContainer.elf[0];
+                levelInfoImporter = _racesLevelInfoContainer.elf[0];
                 break;
             default:
                 Debug.Log("Race level info acquisition defaulted in switch");
                 break;
         }
 
-        result.minHP = levelInfoContainer.minHP;
-        result.maxHP = levelInfoContainer.maxHP;
-        result.minStrength = levelInfoContainer.minStrength;
-        result.maxStrength = levelInfoContainer.maxStrength;
-        result.minDexterity = levelInfoContainer.minDexterity;
-        result.maxDexterity = levelInfoContainer.maxDexterity;
-        result.minIntelligence = levelInfoContainer.minIntelligence;
-        result.maxIntelligence = levelInfoContainer.maxIntelligence;
-        result.minCharisma = levelInfoContainer.minCharisma;
-        result.maxCharisma = levelInfoContainer.maxCharisma;
+        //Create and return a LevelInfo item based on the levelInfoImporter
+        LevelInfo result = new LevelInfo(levelInfoImporter);
+        return result;
+    }
 
+    //Returns a LevelInfo class instance corresponding to the class and level
+    public LevelInfo GetClassLevelInfo(Class class_, int level)
+    {
+        //Find the LevelInfoImporter list corresponding to the specified class
+        List<LevelInfoImporter> levelInfoImporterList = new List<LevelInfoImporter>();
+        switch (class_)
+        {
+            case Class.Warrior:
+                levelInfoImporterList = _classesLevelInfoContainer.warrior;    
+                break;
+            case Class.Mage:
+                levelInfoImporterList = _classesLevelInfoContainer.mage;
+                break;
+            case Class.Rogue:
+                levelInfoImporterList = _classesLevelInfoContainer.rogue;
+                break;
+            case Class.Hunter:
+                levelInfoImporterList = _classesLevelInfoContainer.hunter;
+                break;
+            case Class.Merchant:
+                levelInfoImporterList = _classesLevelInfoContainer.merchant;
+                break;
+            default:
+                Debug.Log("Class levelInfoImporter list acquisition defaulted in switch");
+                break;
+        }
+
+        //Find the list entry corresponding to the specified level
+        LevelInfoImporter levelInfoImporter = new LevelInfoImporter();
+        foreach (LevelInfoImporter item in levelInfoImporterList)
+        {
+            if (item.referenceLevel == level)
+                levelInfoImporter = item;
+        }
+
+        //Create and return a LevelInfo item based on the levelInfoImporter
+        LevelInfo result = new LevelInfo(levelInfoImporter);
         return result;
     }
 
