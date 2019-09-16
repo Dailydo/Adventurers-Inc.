@@ -9,12 +9,12 @@ public class Characters : MonoBehaviour
 
     //A struct containing leveling information
     [System.Serializable]
-    public struct LevellingInfo
+    public struct LevelInfo
     {
         public int referenceLevel;          //Specify here the level to which the data refers to
-        public int experienceToNextLevel;
+        public int XPThreshold;             //Amount of XP to reach to level up
 
-        //The following values are modifiers that add to each other to define min/max values between which pick
+        public int currentXP;
         public int minHP;
         public int maxHP;
         public int minStrength;
@@ -48,10 +48,14 @@ public class Characters : MonoBehaviour
     public enum Class { Unset, Warrior, Mage, Rogue, Hunter, Gunslinger, Paladin, Merchant, Seer };
 
     public SO_Race[] _races;           //References the races available for character generation
-    public SO_Titles _titlesContainer;
+    public Titles _titlesContainer;
+    public Names _namesContainer;
+    public LevelInfo_Races _racesLevelInfoContainer;
+    public LevelInfo_Classes _classesLevelInfoContainer;
     //Add gameplay traits at some point...
 
     public GameObject _characterCard_UI;
+
 
 
     public void Awake()
@@ -78,8 +82,14 @@ public class Characters : MonoBehaviour
         characterInfo.class_ = referenceClass._class;
 
         characterInfo.level = 1;
-        
+
+        //LevelInfo raceLevelInfo = GetRaceLevelInfo(characterInfo.race);
+
+
+
         //Set attributes by cumulating stats from Race and Class for level 1        //Could be later extracted as "Stats gain per level"
+
+        /*
         LevellingInfo raceLevellingInfo = referenceRace._levellingInfo;
         LevellingInfo classLevellingInfo = referenceClass._levellingInfo[0];
 
@@ -95,41 +105,129 @@ public class Characters : MonoBehaviour
         characterInfo._dexterity = (characterInfo._dexterity <= 0) ? 1 : characterInfo._dexterity;
         characterInfo._intelligence = (characterInfo._intelligence <= 0) ? 1 : characterInfo._intelligence;
         characterInfo._charisma = (characterInfo._charisma <= 0) ? 1 : characterInfo._charisma;
+        */
 
         return characterInfo;
+    }
+
+    //Returns the LevelInfo struct corresponding to the specified race
+    public LevelInfo GetRaceLevelInfo(Race race)
+    {
+        LevelInfo result = new LevelInfo();
+
+        //Values that needs to be initialized to 0 as they make no sense for in race
+        result.referenceLevel = 0;
+        result.XPThreshold = 0;
+        result.currentXP = 0;
+
+        //Find the proper LevelInfoImporter based on the race
+        LevelInfoImporter_Races levelInfoContainer = new LevelInfoImporter_Races();
+
+        switch (race)
+        {
+            case Race.Human:
+                levelInfoContainer = _racesLevelInfoContainer.human[0];     //Only one entry for human, levelling is set in classes
+                break;
+            case Race.Dwarf:
+                levelInfoContainer = _racesLevelInfoContainer.dwarf[0];
+                break;
+            case Race.Elf:
+                levelInfoContainer = _racesLevelInfoContainer.elf[0];
+                break;
+            default:
+                Debug.Log("Race level info acquisition defaulted in switch");
+                break;
+        }
+
+        result.minHP = levelInfoContainer.minHP;
+        result.maxHP = levelInfoContainer.maxHP;
+        result.minStrength = levelInfoContainer.minStrength;
+        result.maxStrength = levelInfoContainer.maxStrength;
+        result.minDexterity = levelInfoContainer.minDexterity;
+        result.maxDexterity = levelInfoContainer.maxDexterity;
+        result.minIntelligence = levelInfoContainer.minIntelligence;
+        result.maxIntelligence = levelInfoContainer.maxIntelligence;
+        result.minCharisma = levelInfoContainer.minCharisma;
+        result.maxCharisma = levelInfoContainer.maxCharisma;
+
+        return result;
     }
 
     //Returns a random name based on a Gender, within a RaceInfo data set
     public string GetRandomName(Gender gender, SO_Race raceInfo)
     {
-        string name;
+        string result;
 
-        string[] list;      
-        switch (gender)
+        List<NamesImporter> nameList = GetNameList(raceInfo._race, gender);
+        result = nameList[Random.Range(0, nameList.Count)].name_;
+
+        return result;
+    }
+        
+    //Returns the NamesImporter list corresponding to the specified race and gender
+    public List<NamesImporter> GetNameList (Race race, Gender gender)
+    {
+        List<NamesImporter> result = new List<NamesImporter>();
+
+        switch (race)
         {
-            case Gender.Female:
-                list = raceInfo._names._femaleNames;
+            case Race.Human:
+                switch (gender)
+                {
+                    case Gender.Male:
+                        result = _namesContainer.human_male;
+                        break;
+                    case Gender.Female:
+                        result = _namesContainer.human_female;
+                        break;
+                    default:
+                        Debug.Log("Name assignation defaulted in Race.Human");
+                        break;
+                }
                 break;
-            case Gender.Male:
-                list = raceInfo._names._maleNames;
+            case Race.Dwarf:
+                switch (gender)
+                {
+                    case Gender.Male:
+                        result = _namesContainer.dwarf_male;
+                        break;
+                    case Gender.Female:
+                        result = _namesContainer.dwarf_female;
+                        break;
+                    default:
+                        Debug.Log("Name assignation defaulted in Race.Dwarf");
+                        break;
+                }
                 break;
-            case Gender.Neutral:
-                list = raceInfo._names._neutralNames;
+            case Race.Elf:
+                switch (gender)
+                {
+                    case Gender.Male:
+                        result = _namesContainer.elf_male;
+                        break;
+                    case Gender.Female:
+                        result = _namesContainer.elf_female;
+                        break;
+                    case Gender.Neutral:
+                        result = _namesContainer.elf_neutral;
+                        break;
+                    default:
+                        Debug.Log("Name assignation defaulted in Race.Elf");
+                        break;
+                }
                 break;
             default:
-                list = new string[] { "Empty name" };
-                Debug.Log("Name assignation switch fell back on Default option");
+                Debug.Log("Name assignation defaulted in Race");
                 break;
         }
-        name = list[Random.Range(0, (list.Length))];
 
-        return name;
+        return result;
     }
 
     //Returns a random title in the list _titles
     public string GetRandomTitle()
     {
-        string title = _titlesContainer._titles[Random.Range(0, _titlesContainer._titles.Length)];
+        string title = _titlesContainer.Entities[Random.Range(0, _titlesContainer.Entities.Count)].title;
         return title;
     }
 }

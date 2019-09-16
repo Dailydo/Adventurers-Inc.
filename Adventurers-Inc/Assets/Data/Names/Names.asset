@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7557922188d4b04aa82da17d74e4162, type: 3}
+  m_Name: Names
+  m_EditorClassIdentifier: 
+  human_male:
+  - name_: Jeff
+  - name_: Pierce
+  - name_: Abed
+  - name_: Troy
+  - name_: Elton
+  - name_: Marvin
+  - name_: Maverick
+  - name_: Eiikichi
+  - name_: Mac Bones
+  - name_: Simon
+  - name_: Martin
+  - name_: Roger
+  - name_: "Nathana\xEBl"
+  - name_: Francis
+  - name_: Hubert
+  - name_: Brick
+  - name_: Roland
+  - name_: Jack
+  - name_: "Moredeca\xEF"
+  - name_: Roberto
+  human_female:
+  - name_: Britta
+  - name_: Annie
+  - name_: Shirley
+  - name_: "S\xE9l\xE9na"
+  - name_: Jeanne
+  - name_: Hannah
+  - name_: Morgane
+  - name_: Anabelle
+  - name_: Agathe
+  - name_: Lydia
+  - name_: Cochenille
+  - name_: Marceline
+  - name_: Tiny Tina
+  dwarf_male:
+  - name_: Balin
+  - name_: Dwalin
+  - name_: Baldur
+  - name_: Dolgrin
+  - name_: Grungar
+  - name_: Harsk
+  - name_: Kazmuk
+  - name_: Morgrym
+  - name_: Rogar
+  - name_: Gimli
+  dwarf_female:
+  - name_: Agna
+  - name_: Gudrid
+  - name_: Edna
+  - name_: Bodill
+  - name_: Ingra
+  - name_: Kotri
+  - name_: Rusilka
+  - name_: Yangrit
+  - name_: Kalta
+  elf_male:
+  - name_: Celebor
+  - name_: Elrond
+  - name_: Talathel
+  - name_: Caladrel
+  - name_: Heldal
+  - name_: Meiradrel
+  - name_: Seldon
+  - name_: Variel
+  - name_: Zordlon
+  elf_female:
+  - name_: Lunara
+  - name_: Tessara
+  - name_: Arwen
+  - name_: Amrunelra
+  - name_: Dardlara
+  - name_: Faunra
+  - name_: Oparal
+  - name_: Soumral
+  - name_: Yalandhadra
+  elf_neutral:
+  - name_: Tesserth
+  - name_: Merisiel
+  - name_: Jayeth
+  - name_: Jathel
+  - name_: Celendril

@@ -6,5 +6,4 @@ using UnityEngine;
 public class SO_Class : ScriptableObject
 {
     public Characters.Class _class;
-    public Characters.LevellingInfo[] _levellingInfo;
 }

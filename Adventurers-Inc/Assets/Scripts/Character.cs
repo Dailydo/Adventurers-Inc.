@@ -11,8 +11,9 @@ public class Character : MonoBehaviour
     public Characters.Race _race;
     public Characters.Class _class;
     public int _level = 0;
+    public int _XPThreashold = 0;
 
-    public int _currentXP = 0;
+    public int _currentXP = -1;
     public int _maxHP = 0;
     public int _currentHP = 0;
     public int _strength = 0;

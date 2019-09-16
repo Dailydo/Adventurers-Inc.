@@ -2,74 +2,86 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 8
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e86de0fd1c1a24ea7d32621803444d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e00465bb62009e459b92ba1c0016d10, type: 3}
   m_Name: Titles
   m_EditorClassIdentifier: 
-  _titles:
-  - the Tentacle
-  - the Parasite
-  - the Well-informed
-  - the Well-endowed
-  - the Well-connected
-  - the Well-mannered
-  - the Ferocious
-  - the Ambiguous
-  - the Salacious
-  - the Loner
-  - the First
-  - the Second
-  - the Third
-  - the Last
-  - the Late
-  - the Crab-eater
-  - the Oyster
-  - the Smelly One
-  - the Chosen One
-  - the Crippled
-  - the Bad Friend
-  - the Solitary
-  - the Distant Relative
-  - the Old Fart
-  - the Flatulent
-  - the Nauseous
-  - the Deaf
-  - the Bald
-  - the Blind
-  - the Easterner
-  - the Player
-  - the Loser
-  - the Humble
-  - the Destroyer
-  - the Unwise
-  - the Magnificent
-  - the Light-hearted
-  - the Muffin-man
-  - the Worm
-  - the Fancy
-  - the Charmer
-  - the Gardener
-  - the Hair-dresser
-  - the Starving
-  - the Thinker
-  - the Drunk-relative
-  - the Party-animail
-  - the Dogs-lover
-  - the Cats-hater
-  - the Awoken
-  - the Relic
-  - the Nepotic
-  - the Soft
-  - the Driven
-  - the Religious
-  - the Zealot
-  - the Naked
-  - the Tower-builder
-  - the Master-mind
-  - the Oddly-shaped
+  Entities:
+  - title: the Shameful
+  - title: the Carried-away
+  - title: the People-person
+  - title: the Progressive
+  - title: the Hairy
+  - title: the Tentacle
+  - title: the Well-informed
+  - title: the Well-endowed
+  - title: the Well-connected
+  - title: the Well-mannered
+  - title: the Ferocious
+  - title: the Ambiguous
+  - title: the Salacious
+  - title: the Loner
+  - title: the First
+  - title: the Second
+  - title: the Third
+  - title: the Last
+  - title: the Late
+  - title: the Crab-Eater
+  - title: the Ethereous
+  - title: the Oyster
+  - title: the Smelly One
+  - title: the Chosen One
+  - title: the Crippled
+  - title: the Bad Friend
+  - title: the Distant Relative
+  - title: the Old Fart
+  - title: the Flatulent
+  - title: the Gazeous
+  - title: the Nauseous
+  - title: the Deaf
+  - title: the Blind
+  - title: the Armless
+  - title: the Bald
+  - title: from the East
+  - title: the Player
+  - title: the Loser
+  - title: the Humble
+  - title: the Destroyer
+  - title: the Unwise
+  - title: the Magnificent
+  - title: the Light-hearted
+  - title: the Worm
+  - title: the Fancy
+  - title: the Dandy
+  - title: the Charmer
+  - title: the Gardener
+  - title: the Hair-dresser
+  - title: the Starving
+  - title: the Drunk Relative
+  - title: the Favored Child
+  - title: the Party-animal
+  - title: the Awoken
+  - title: the Sleepless
+  - title: the Relic
+  - title: the Nepotic
+  - title: the Soft
+  - title: the Will-driven
+  - title: the Iron Fortress
+  - title: the Soft
+  - title: the Religious
+  - title: the Zealot
+  - title: the Naked
+  - title: the Tower-builder
+  - title: the Sculptor
+  - title: the Town-builder
+  - title: the Bed-builder
+  - title: the Mastermind
+  - title: the Exotic
+  - title: the Oddly-Shaped
+  - title: the Handsome

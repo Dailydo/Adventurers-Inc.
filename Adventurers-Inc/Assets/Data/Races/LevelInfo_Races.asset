@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efba08d6ff6f7bb48a919efe298b4781, type: 3}
+  m_Name: LevelInfo_Races
+  m_EditorClassIdentifier: 
+  human:
+  - referenceLevel: 0
+    XPThreshold: 0
+    minHP: 6
+    maxHP: 10
+    minStrength: 3
+    maxStrength: 5
+    minIntelligence: 3
+    maxIntelligence: 5
+    minCharisma: 3
+    maxCharisma: 5
+  dwarf:
+  - referenceLevel: 0
+    XPThreshold: 0
+    minHP: 8
+    maxHP: 12
+    minStrength: 5
+    maxStrength: 7
+    minIntelligence: 2
+    maxIntelligence: 4
+    minCharisma: 2
+    maxCharisma: 4
+  elf:
+  - referenceLevel: 0
+    XPThreshold: 0
+    minHP: 4
+    maxHP: 8
+    minStrength: 2
+    maxStrength: 4
+    minIntelligence: 4
+    maxIntelligence: 6
+    minCharisma: 3
+    maxCharisma: 5

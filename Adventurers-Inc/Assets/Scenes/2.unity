@@ -2658,6 +2658,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4bdba5c5ea85fe444a3d94c9e02e0196, type: 2}
   - {fileID: 11400000, guid: 117e8f23b58e2c5469acdf61898f77d6, type: 2}
   _titlesContainer: {fileID: 11400000, guid: 3eeb3bfa849b27f4f9fdce53c1c51006, type: 2}
+  _namesContainer: {fileID: 11400000, guid: 67afefb5ddadff948906a00050c1ba84, type: 2}
+  _racesLevelInfoContainer: {fileID: 11400000, guid: b4bdbd2f2689b8244bd04e2b6e33fc78,
+    type: 2}
+  _classesLevelInfoContainer: {fileID: 11400000, guid: eec366eac81afdd48a42e95a01ea9d92,
+    type: 2}
   _characterCard_UI: {fileID: 40878838}
 --- !u!4 &618785278
 Transform:
@@ -3766,7 +3771,7 @@ PrefabInstance:
     - target: {fileID: 6014056513002767556, guid: 0395a7dc59837c5418a164ed75be583c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6014056513002767556, guid: 0395a7dc59837c5418a164ed75be583c,
         type: 3}
@@ -3776,7 +3781,7 @@ PrefabInstance:
     - target: {fileID: 6014056513002767556, guid: 0395a7dc59837c5418a164ed75be583c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6014056513002767556, guid: 0395a7dc59837c5418a164ed75be583c,
         type: 3}

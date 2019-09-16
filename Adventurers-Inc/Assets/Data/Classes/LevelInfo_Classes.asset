@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992691ddee4a43e45800128b19f53cd8, type: 3}
+  m_Name: LevelInfo_Classes
+  m_EditorClassIdentifier: 
+  warrior:
+  - referenceLevel: 1
+    XPThreshold: 100
+    minHP: 4
+    maxHP: 6
+    minStrength: 3
+    maxStrength: 6
+    minIntelligence: 0
+    maxIntelligence: 2
+    minCharisma: 0
+    maxCharisma: 3
+  - referenceLevel: 2
+    XPThreshold: 250
+    minHP: 4
+    maxHP: 6
+    minStrength: 3
+    maxStrength: 6
+    minIntelligence: 0
+    maxIntelligence: 2
+    minCharisma: 0
+    maxCharisma: 3
+  - referenceLevel: 3
+    XPThreshold: 500
+    minHP: 4
+    maxHP: 6
+    minStrength: 3
+    maxStrength: 6
+    minIntelligence: 0
+    maxIntelligence: 2
+    minCharisma: 0
+    maxCharisma: 3
+  mage:
+  - referenceLevel: 1
+    XPThreshold: 100
+    minHP: 2
+    maxHP: 4
+    minStrength: 0
+    maxStrength: 2
+    minIntelligence: 5
+    maxIntelligence: 8
+    minCharisma: 1
+    maxCharisma: 2
+  - referenceLevel: 2
+    XPThreshold: 250
+    minHP: 2
+    maxHP: 4
+    minStrength: 0
+    maxStrength: 2
+    minIntelligence: 5
+    maxIntelligence: 8
+    minCharisma: 1
+    maxCharisma: 2
+  - referenceLevel: 3
+    XPThreshold: 500
+    minHP: 2
+    maxHP: 4
+    minStrength: 0
+    maxStrength: 2
+    minIntelligence: 5
+    maxIntelligence: 8
+    minCharisma: 1
+    maxCharisma: 2
+  rogue:
+  - referenceLevel: 1
+    XPThreshold: 100
+    minHP: 2
+    maxHP: 4
+    minStrength: 2
+    maxStrength: 4
+    minIntelligence: 1
+    maxIntelligence: 3
+    minCharisma: 0
+    maxCharisma: 2
+  - referenceLevel: 2
+    XPThreshold: 250
+    minHP: 2
+    maxHP: 4
+    minStrength: 2
+    maxStrength: 4
+    minIntelligence: 1
+    maxIntelligence: 3
+    minCharisma: 0
+    maxCharisma: 2
+  - referenceLevel: 3
+    XPThreshold: 500
+    minHP: 2
+    maxHP: 4
+    minStrength: 2
+    maxStrength: 4
+    minIntelligence: 1
+    maxIntelligence: 3
+    minCharisma: 0
+    maxCharisma: 2
+  hunter:
+  - referenceLevel: 1
+    XPThreshold: 100
+    minHP: 3
+    maxHP: 5
+    minStrength: 2
+    maxStrength: 5
+    minIntelligence: 2
+    maxIntelligence: 3
+    minCharisma: 1
+    maxCharisma: 3
+  - referenceLevel: 2
+    XPThreshold: 250
+    minHP: 3
+    maxHP: 5
+    minStrength: 2
+    maxStrength: 5
+    minIntelligence: 2
+    maxIntelligence: 3
+    minCharisma: 1
+    maxCharisma: 3
+  - referenceLevel: 3
+    XPThreshold: 500
+    minHP: 3
+    maxHP: 5
+    minStrength: 2
+    maxStrength: 5
+    minIntelligence: 2
+    maxIntelligence: 3
+    minCharisma: 1
+    maxCharisma: 3
+  merchant:
+  - referenceLevel: 1
+    XPThreshold: 100
+    minHP: 2
+    maxHP: 5
+    minStrength: 1
+    maxStrength: 3
+    minIntelligence: 2
+    maxIntelligence: 5
+    minCharisma: 4
+    maxCharisma: 6
+  - referenceLevel: 2
+    XPThreshold: 250
+    minHP: 2
+    maxHP: 5
+    minStrength: 1
+    maxStrength: 3
+    minIntelligence: 2
+    maxIntelligence: 5
+    minCharisma: 4
+    maxCharisma: 6
+  - referenceLevel: 3
+    XPThreshold: 500
+    minHP: 2
+    maxHP: 5
+    minStrength: 1
+    maxStrength: 3
+    minIntelligence: 2
+    maxIntelligence: 5
+    minCharisma: 4
+    maxCharisma: 6
