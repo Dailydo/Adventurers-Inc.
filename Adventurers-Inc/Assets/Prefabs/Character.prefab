@@ -2507,7 +2507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2624004403007577286
 Transform:
   m_ObjectHideFlags: 0
@@ -3481,6 +3481,7 @@ MonoBehaviour:
   _race: 0
   _class: 0
   _level: 0
+  _XPThreashold: 0
   _currentXP: 0
   _maxHP: 0
   _currentHP: 0

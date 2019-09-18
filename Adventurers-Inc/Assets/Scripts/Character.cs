@@ -53,7 +53,7 @@ public class Character : MonoBehaviour
     //Update the characterCard with current values
     public void UpdateCharacterCard()
     {
-        _characterCard.UpdateCardValues(this);
-        Characters.instance._characterCard_UI.GetComponent<CharacterCard_UI>().UpdateCardValues(this);
+        if (_characterCard.isActiveAndEnabled) _characterCard.UpdateCardValues(this);
+        if (Characters.instance._characterCard_UI.activeSelf) Characters.instance._characterCard_UI.GetComponent<CharacterCard_UI>().UpdateCardValues(this);
     }
 }
