@@ -11,7 +11,7 @@ public class Character : MonoBehaviour
     public Characters.Race _race;
     public Characters.Class _class;
     public int _level = 0;
-    public int _XPThreashold = 0;
+    public int _XPThreshold = 0;
 
     public int _currentXP = -1;
     public int _maxHP = 0;
@@ -21,12 +21,15 @@ public class Character : MonoBehaviour
     public int _intelligence = 0;
     public int _charisma = 0;
 
-    private CharacterCard _characterCard;          //Reference to the characterCard displaying the character's information
+    private CharacterCard _3DCharacterCard;          //Reference to the characterCard displaying the character's information
+    private UICharacterCardClamp _UICharacterCardClamp;
+    private GameObject _UICharacterCard = null;
 
 
     void Awake()
     {
-        _characterCard = transform.Find("CharacterCard").GetComponent<CharacterCard>();
+        _3DCharacterCard = transform.Find("3DCharacterCard").GetComponent<CharacterCard>();
+        _UICharacterCardClamp = transform.Find("UICharacterCard_AnchorPoint").GetComponent<UICharacterCardClamp>();
     }
 
     //Generates a character with randomized traits
@@ -41,19 +44,23 @@ public class Character : MonoBehaviour
         _title = characterInfo.title;
 
         _level = characterInfo.level;
+        _XPThreshold = characterInfo.experienceThreshold;
 
-        _maxHP = characterInfo._maxHP;
+        _maxHP = characterInfo.maxHP;
         _currentHP = _maxHP;
-        _strength = characterInfo._strength;
-        _dexterity = characterInfo._dexterity;
-        _intelligence = characterInfo._intelligence;
-        _charisma = characterInfo._charisma;
+        _strength = characterInfo.strength;
+        _dexterity = characterInfo.dexterity;
+        _intelligence = characterInfo.intelligence;
+        _charisma = characterInfo.charisma;
     }
 
     //Update the characterCard with current values
     public void UpdateCharacterCard()
     {
-        if (_characterCard.isActiveAndEnabled) _characterCard.UpdateCardValues(this);
-        if (Characters.instance._characterCard_UI.activeSelf) Characters.instance._characterCard_UI.GetComponent<CharacterCard_UI>().UpdateCardValues(this);
+        if (_3DCharacterCard.isActiveAndEnabled)    _3DCharacterCard.UpdateCardValues(this);
+
+        if (_UICharacterCard == null)
+            _UICharacterCard = _UICharacterCardClamp._UICharacterCard;
+        _UICharacterCard.GetComponent<CharacterCard_UI>().UpdateCardValues(this);
     }
 }

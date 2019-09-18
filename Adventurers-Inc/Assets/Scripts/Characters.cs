@@ -84,11 +84,13 @@ public class Characters : MonoBehaviour
         public Class class_;
 
         public int level;
-        public int _maxHP;
-        public int _strength;
-        public int _dexterity;
-        public int _intelligence;
-        public int _charisma;
+        public int experienceThreshold;
+
+        public int maxHP;
+        public int strength;
+        public int dexterity;
+        public int intelligence;
+        public int charisma;
     }
 
     public enum Gender { Unset, Male, Female, Neutral };
@@ -102,7 +104,6 @@ public class Characters : MonoBehaviour
     public LevelInfo_Classes _classesLevelInfoContainer;
     //Add gameplay traits at some point...
 
-    public GameObject _characterCard_UI;
 
 
     public void Awake()
@@ -134,12 +135,14 @@ public class Characters : MonoBehaviour
         LevelInfo raceLevelInfo = GetRaceLevelInfo(characterInfo.race);
         LevelInfo classLevelInfo = GetClassLevelInfo(characterInfo.class_, 1);
 
+        characterInfo.experienceThreshold = classLevelInfo._XPThreshold;
+
         //Set attributes by cumulating level info stats, made at least positive
-        characterInfo._maxHP = EnsurePositiveValue(raceLevelInfo.GetRandomizedHP() + classLevelInfo.GetRandomizedHP());
-        characterInfo._strength = EnsurePositiveValue(raceLevelInfo.GetRandomizedStrength() + classLevelInfo.GetRandomizedStrength());
-        characterInfo._dexterity = EnsurePositiveValue(raceLevelInfo.GetRandomizedDexterity() + classLevelInfo.GetRandomizedDexterity());
-        characterInfo._intelligence = EnsurePositiveValue(raceLevelInfo.GetRandomizedIntelligence() + classLevelInfo.GetRandomizedIntelligence());
-        characterInfo._charisma = EnsurePositiveValue(raceLevelInfo.GetRandomizedCharisma() + classLevelInfo.GetRandomizedCharisma());
+        characterInfo.maxHP = EnsurePositiveValue(raceLevelInfo.GetRandomizedHP() + classLevelInfo.GetRandomizedHP());
+        characterInfo.strength = EnsurePositiveValue(raceLevelInfo.GetRandomizedStrength() + classLevelInfo.GetRandomizedStrength());
+        characterInfo.dexterity = EnsurePositiveValue(raceLevelInfo.GetRandomizedDexterity() + classLevelInfo.GetRandomizedDexterity());
+        characterInfo.intelligence = EnsurePositiveValue(raceLevelInfo.GetRandomizedIntelligence() + classLevelInfo.GetRandomizedIntelligence());
+        characterInfo.charisma = EnsurePositiveValue(raceLevelInfo.GetRandomizedCharisma() + classLevelInfo.GetRandomizedCharisma());
 
         return characterInfo;
     }
