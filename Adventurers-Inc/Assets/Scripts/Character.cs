@@ -21,15 +21,14 @@ public class Character : MonoBehaviour
     public int _intelligence = 0;
     public int _charisma = 0;
 
-    private CharacterCard _3DCharacterCard;          //Reference to the characterCard displaying the character's information
-    private UICharacterCardClamp _UICharacterCardClamp;
-    private GameObject _UICharacterCard = null;
+    public GameObject _currentActivity;                 //The activity currently occupied by the character
+
+    private UI_CharacterHeader _UICharacterHeader;          //Reference to the header displayed over the character when selected 
 
 
     void Awake()
     {
-        _3DCharacterCard = transform.Find("3DCharacterCard").GetComponent<CharacterCard>();
-        _UICharacterCardClamp = transform.Find("UICharacterCard_AnchorPoint").GetComponent<UICharacterCardClamp>();
+        _UICharacterHeader = null;
     }
 
     //Generates a character with randomized traits
@@ -52,15 +51,17 @@ public class Character : MonoBehaviour
         _dexterity = characterInfo.dexterity;
         _intelligence = characterInfo.intelligence;
         _charisma = characterInfo.charisma;
+
+        UpdateCharacterHeader();
     }
 
     //Update the characterCard with current values
-    public void UpdateCharacterCard()
+    public void UpdateCharacterHeader()
     {
-        if (_3DCharacterCard.isActiveAndEnabled)    _3DCharacterCard.UpdateCardValues(this);
+        //Reference the character header on first use
+        if (_UICharacterHeader == null)
+            _UICharacterHeader = transform.Find("UIHeaderAnchorPoint").GetComponent<ClampUIOverObject>()._UICharacterHeader.GetComponent<UI_CharacterHeader>();
 
-        if (_UICharacterCard == null)
-            _UICharacterCard = _UICharacterCardClamp._UICharacterCard;
-        _UICharacterCard.GetComponent<CharacterCard_UI>().UpdateCardValues(this);
+        _UICharacterHeader.UpdateHeaderValues(this);
     }
 }

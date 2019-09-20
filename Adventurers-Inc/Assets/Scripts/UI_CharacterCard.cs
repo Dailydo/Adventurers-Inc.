@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CharacterCard_UI : MonoBehaviour
+public class UI_CharacterCard : MonoBehaviour
 {
     public GameObject _name_GO;          //Reference to the gameobjects containing the texts
     public GameObject _title_GO;

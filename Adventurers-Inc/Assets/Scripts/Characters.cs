@@ -7,7 +7,7 @@ public class Characters : MonoBehaviour
 
     public static Characters instance = null;       //singleton's instance
 
-    //A struct containing leveling information
+    //A class containing leveling information
     [System.Serializable]
     public class LevelInfo
     {
@@ -104,6 +104,11 @@ public class Characters : MonoBehaviour
     public LevelInfo_Classes _classesLevelInfoContainer;
     //Add gameplay traits at some point...
 
+    public GameObject _charactersContainer;         //The gameObject in which characters transform are set, for scene organization purpose
+    public List<GameObject> _charactersList;        //List of all the characters currently present in the scene
+    public GameObject _characterPrefab;
+    public int _maxCharactersNumber = 2;            //Character generation cap so they don't exceed the scene's capacity
+    public int _charactersToSpawn = 1;              //Number of characters to spawn on play
 
 
     public void Awake()
@@ -115,6 +120,40 @@ public class Characters : MonoBehaviour
             Destroy(gameObject);
     }
 
+    public void Start()
+    {
+        //Check values
+        if (_charactersToSpawn > _maxCharactersNumber)
+        {
+            _charactersToSpawn = _maxCharactersNumber;
+            Debug.Log("Requested characters number exceeds scene's capacity");
+        }
+
+        //Spawn characters
+        int i = 0;
+        while (i < _charactersToSpawn)
+        {
+            SpawnCharacter();
+            i++;
+        }
+    }
+
+
+    //Spawns a character on an available activity and generate it
+    public void SpawnCharacter()
+    {
+        GameObject spawnActivity = ActivitiesManager.instance.GetRandomAvailableActivity();
+
+        GameObject character = Instantiate(_characterPrefab, spawnActivity.transform.position, Quaternion.identity);
+        character.transform.parent = _charactersContainer.transform;
+        spawnActivity.GetComponent<Activity>()._status = ActivitiesManager.Status.Occupied;
+
+        Character characterScript = character.GetComponent<Character>();
+        characterScript.GenerateCharacter();
+        characterScript._currentActivity = spawnActivity;
+    }
+
+    //Returns a character (informations, not instantiation)
     public CharacterInfo GenerateRandomCharacterInfo()
     {
         CharacterInfo characterInfo = new CharacterInfo();
@@ -146,7 +185,7 @@ public class Characters : MonoBehaviour
 
         return characterInfo;
     }
-
+    
     //Returns the value or '1' if the value is inferior to 1
     public int EnsurePositiveValue(int value)
     {
