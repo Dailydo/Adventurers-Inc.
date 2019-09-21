@@ -104,7 +104,6 @@ public class Characters : MonoBehaviour
     public LevelInfo_Classes _classesLevelInfoContainer;
     //Add gameplay traits at some point...
 
-    public GameObject _charactersContainer;         //The gameObject in which characters transform are set, for scene organization purpose
     public List<GameObject> _charactersList;        //List of all the characters currently present in the scene
     public GameObject _characterPrefab;
     public int _maxCharactersNumber = 2;            //Character generation cap so they don't exceed the scene's capacity
@@ -143,12 +142,12 @@ public class Characters : MonoBehaviour
     public void SpawnCharacter()
     {
         //Activity management
-        Activity spawnActivity = ActivitiesManager.instance.GetRandomAvailableActivity();
-        spawnActivity.GetComponent<Activity>()._status = ActivitiesManager.Status.Occupied;
+        Activity spawnActivity = Activities.instance.GetRandomAvailableActivity();
+        spawnActivity.GetComponent<Activity>()._status = Activities.Status.Occupied;
 
         //Character spawn
         GameObject character = Instantiate(_characterPrefab, spawnActivity.transform.position, Quaternion.identity);
-        character.transform.parent = _charactersContainer.transform;
+        character.transform.parent = transform;
 
         //Character's info generation
         character.GetComponent<Character>().GenerateCharacter();

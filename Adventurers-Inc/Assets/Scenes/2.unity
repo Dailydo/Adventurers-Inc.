@@ -1934,8 +1934,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307919219}
+  - component: {fileID: 307919220}
   m_Layer: 0
-  m_Name: Characters
+  m_Name: _Characters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1955,6 +1956,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307919220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307919218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb8bc65dd062a94d801c79317a208d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _races:
+  - {fileID: 11400000, guid: 549b01e65ea41cb40824284c0f894965, type: 2}
+  - {fileID: 11400000, guid: 4bdba5c5ea85fe444a3d94c9e02e0196, type: 2}
+  - {fileID: 11400000, guid: 117e8f23b58e2c5469acdf61898f77d6, type: 2}
+  _titlesContainer: {fileID: 11400000, guid: 3eeb3bfa849b27f4f9fdce53c1c51006, type: 2}
+  _namesContainer: {fileID: 11400000, guid: 67afefb5ddadff948906a00050c1ba84, type: 2}
+  _racesLevelInfoContainer: {fileID: 11400000, guid: b4bdbd2f2689b8244bd04e2b6e33fc78,
+    type: 2}
+  _classesLevelInfoContainer: {fileID: 11400000, guid: eec366eac81afdd48a42e95a01ea9d92,
+    type: 2}
+  _charactersList: []
+  _characterPrefab: {fileID: 6014056513002767559, guid: 0395a7dc59837c5418a164ed75be583c,
+    type: 3}
+  _maxCharactersNumber: 4
+  _charactersToSpawn: 3
 --- !u!1 &332549361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3496,44 +3524,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 618785278}
-  - component: {fileID: 618785277}
   - component: {fileID: 618785279}
-  - component: {fileID: 618785280}
   m_Layer: 0
-  m_Name: GlobalManager
+  m_Name: _UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &618785277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618785276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb8bc65dd062a94d801c79317a208d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _races:
-  - {fileID: 11400000, guid: 549b01e65ea41cb40824284c0f894965, type: 2}
-  - {fileID: 11400000, guid: 4bdba5c5ea85fe444a3d94c9e02e0196, type: 2}
-  - {fileID: 11400000, guid: 117e8f23b58e2c5469acdf61898f77d6, type: 2}
-  _titlesContainer: {fileID: 11400000, guid: 3eeb3bfa849b27f4f9fdce53c1c51006, type: 2}
-  _namesContainer: {fileID: 11400000, guid: 67afefb5ddadff948906a00050c1ba84, type: 2}
-  _racesLevelInfoContainer: {fileID: 11400000, guid: b4bdbd2f2689b8244bd04e2b6e33fc78,
-    type: 2}
-  _classesLevelInfoContainer: {fileID: 11400000, guid: eec366eac81afdd48a42e95a01ea9d92,
-    type: 2}
-  _charactersContainer: {fileID: 307919218}
-  _charactersList: []
-  _characterPrefab: {fileID: 6014056513002767559, guid: 0395a7dc59837c5418a164ed75be583c,
-    type: 3}
-  _maxCharactersNumber: 4
-  _charactersToSpawn: 3
 --- !u!4 &618785278
 Transform:
   m_ObjectHideFlags: 0
@@ -3562,22 +3560,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CharacterCard: {fileID: 1348169132}
   _currentSelectedObject: {fileID: 0}
---- !u!114 &618785280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618785276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1819ac518c79e47b74c0ddef457c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _activities: {fileID: 1049061319}
-  _activityPointsList: []
-  _activityMinDuration: 2
-  _activityMaxDuration: 10
 --- !u!1 &619306094
 GameObject:
   m_ObjectHideFlags: 0
@@ -6086,8 +6068,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1049061320}
+  - component: {fileID: 1049061321}
   m_Layer: 0
-  m_Name: Activities
+  m_Name: _Activities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6123,6 +6106,22 @@ Transform:
   m_Father: {fileID: 454808616}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049061321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049061319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1819ac518c79e47b74c0ddef457c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activityPointsList: []
+  _activityMinDuration: 1
+  _activityMaxDuration: 10
+  _activityProximityTolerance: 0.15
 --- !u!1001 &1057445194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9142,7 +9141,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivitiesManager : MonoBehaviour
+public class Activities : MonoBehaviour
 {
-    public static ActivitiesManager instance = null;       //singleton's instance
+    public static Activities instance = null;       //singleton's instance
     public enum Status { Unset, Available, Reserved, Occupied};
 
-    public GameObject _activities;                  //The gameobject which contains the activities distributed in the scene
     public List<Activity> _activityPointsList;
-    public float _activityMinDuration = 0f;         //Minimum duration of an activity, in seconds
+    public float _activityMinDuration = 1f;         //Minimum duration of an activity, in seconds
     public float _activityMaxDuration = 6f;
+    public float _activityProximityTolerance = 0.1f;            //Distance from which the character is considered having reached its targeted activity
 
     private List<CharacterActivity> _characterPendingActivityList;
 
@@ -23,7 +23,7 @@ public class ActivitiesManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
 
-        _activityPointsList = GetActivitiesInGameObject(_activities);
+        _activityPointsList = GetActivitiesInGameObject(gameObject);
         _characterPendingActivityList = new List<CharacterActivity>();
     }
 
@@ -74,7 +74,7 @@ public class ActivitiesManager : MonoBehaviour
         List<Activity> candidates = new List<Activity>();
         foreach (Activity item in _activityPointsList)
         {
-            if (item.GetComponent<Activity>()._status == ActivitiesManager.Status.Available)
+            if (item.GetComponent<Activity>()._status == Activities.Status.Available)
                 candidates.Add(item);
         }
 

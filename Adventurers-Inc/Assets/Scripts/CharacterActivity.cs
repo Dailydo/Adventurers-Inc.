@@ -9,7 +9,6 @@ public class CharacterActivity : MonoBehaviour
 
     public Status _status = Status.Unset;
     public Activity _targetedActivity;
-    public float _activityProximityTolerance = 0.1f;            //Distance from which the character is considered having reached its targeted activity
     public float _currentDistance = 0f;
 
     private NavMeshAgent _agent;
@@ -27,10 +26,10 @@ public class CharacterActivity : MonoBehaviour
         {
             _currentDistance = Vector3.Distance(transform.position, _targetedActivity.transform.position);
             //If character is close enough to destination
-            if (_currentDistance <= _activityProximityTolerance)
+            if (_currentDistance <= Activities.instance._activityProximityTolerance)
             {
                 transform.position = _targetedActivity.transform.position;
-                _targetedActivity._status = ActivitiesManager.Status.Occupied;
+                _targetedActivity._status = Activities.Status.Occupied;
 
                 //Wait for some time while performing activity then move elsewhere
                 _status = Status.PerformingActivity;
@@ -43,7 +42,7 @@ public class CharacterActivity : MonoBehaviour
     public void MoveToAvailableActivity()
     {
         //Signal the activities manager that the character is waiting for an activity
-        ActivitiesManager.instance.LogPendingActivity(this);
+        Activities.instance.LogPendingActivity(this);
     }
 
     //Sets a destination for the character
@@ -55,7 +54,7 @@ public class CharacterActivity : MonoBehaviour
     //Waits for a random duration (min, max) then moves the character elsewhere
     IEnumerator WaitRandomDurationThenMove()
     {
-        float activityDuration = Random.Range(ActivitiesManager.instance._activityMinDuration, ActivitiesManager.instance._activityMaxDuration);
+        float activityDuration = Random.Range(Activities.instance._activityMinDuration, Activities.instance._activityMaxDuration);
 
         yield return new WaitForSeconds(activityDuration);
         MoveToAvailableActivity();
