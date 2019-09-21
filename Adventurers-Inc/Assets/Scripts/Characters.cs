@@ -142,15 +142,19 @@ public class Characters : MonoBehaviour
     //Spawns a character on an available activity and generate it
     public void SpawnCharacter()
     {
-        GameObject spawnActivity = ActivitiesManager.instance.GetRandomAvailableActivity();
-
-        GameObject character = Instantiate(_characterPrefab, spawnActivity.transform.position, Quaternion.identity);
-        character.transform.parent = _charactersContainer.transform;
+        //Activity management
+        Activity spawnActivity = ActivitiesManager.instance.GetRandomAvailableActivity();
         spawnActivity.GetComponent<Activity>()._status = ActivitiesManager.Status.Occupied;
 
-        Character characterScript = character.GetComponent<Character>();
-        characterScript.GenerateCharacter();
-        characterScript._currentActivity = spawnActivity;
+        //Character spawn
+        GameObject character = Instantiate(_characterPrefab, spawnActivity.transform.position, Quaternion.identity);
+        character.transform.parent = _charactersContainer.transform;
+
+        //Character's info generation
+        character.GetComponent<Character>().GenerateCharacter();
+
+        //Character's activity link
+        character.GetComponent<CharacterActivity>()._targetedActivity = spawnActivity;
     }
 
     //Returns a character (informations, not instantiation)

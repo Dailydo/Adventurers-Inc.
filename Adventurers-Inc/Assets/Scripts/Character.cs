@@ -21,19 +21,20 @@ public class Character : MonoBehaviour
     public int _intelligence = 0;
     public int _charisma = 0;
 
-    public GameObject _currentActivity;                 //The activity currently occupied by the character
-
     private UI_CharacterHeader _UICharacterHeader;          //Reference to the header displayed over the character when selected 
+    private CharacterActivity _characterActivity;           //Reference to the character's activity script
 
 
     void Awake()
     {
         _UICharacterHeader = null;
+        _characterActivity = gameObject.GetComponent<CharacterActivity>();
     }
 
     //Generates a character with randomized traits
     public void GenerateCharacter()
     {
+        //Character's info generation and assignation 
         Characters.CharacterInfo characterInfo = Characters.instance.GenerateRandomCharacterInfo();
 
         _race = characterInfo.race;
@@ -52,7 +53,11 @@ public class Character : MonoBehaviour
         _intelligence = characterInfo.intelligence;
         _charisma = characterInfo.charisma;
 
+        //UI update
         UpdateCharacterHeader();
+
+        //Initial movement
+        _characterActivity.MoveToAvailableActivity();
     }
 
     //Update the characterCard with current values
