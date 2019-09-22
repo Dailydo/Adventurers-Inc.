@@ -110,9 +110,9 @@ public class Characters : MonoBehaviour
     //Add gameplay traits at some point...
 
     public GameObject _characterPrefab;
-    public int _maxCharactersNumber = 2;            //Character generation cap so they don't exceed the scene's capacity
+    public int _maxCharactersNumber = 4;            //Character generation cap so they don't exceed the scene's capacity
     public List<GameObject> _charactersList;        //List of all the characters currently present in the scene
-    public int _charactersToSpawn = 1;              //Number of characters to spawn on play
+    public int _charactersToSpawn = 2;              //Number of characters to spawn on play
 
 
 
@@ -130,7 +130,6 @@ public class Characters : MonoBehaviour
     public void Start()
     {
         SpawnCharacters(_charactersToSpawn);
-        UpdateCharactersReference();
     }
 
 
@@ -139,20 +138,15 @@ public class Characters : MonoBehaviour
     //Spawns a number of characters in the scene
     public void SpawnCharacters(int number)
     {
-        //Cap characters number based on max allowed number
-        if (number > _maxCharactersNumber)
-        {
-            number = _maxCharactersNumber;
-            Debug.Log("Requested characters number exceeds scene's capacity");
-        }
-
         //Spawn characters 
         int i = 0;
-        while (i < number)
+        while (i < number & GetCharacterNumbers() < _maxCharactersNumber)
         {
             SpawnAndGenerateCharacter();
             i++;
         }
+        if (GetCharacterNumbers() > _maxCharactersNumber)
+            Debug.Log("The number of spawned characters exceeds the scene's capacity");
     }
 
     //Spawns a character on an available activity and generate it
@@ -161,6 +155,7 @@ public class Characters : MonoBehaviour
         //Spawn the character and assign it to the "Characters" gameobject
         GameObject character = Instantiate(_characterPrefab, Vector3.zero, Quaternion.identity);
         character.transform.parent = transform;
+        _charactersList.Add(character);
     }
 
     //Returns a character (informations, not instantiation)
@@ -352,15 +347,9 @@ public class Characters : MonoBehaviour
     }
 
     //Updates the list containing the number of characters
-    public void UpdateCharactersReference()
-    {
-        _charactersList.Clear();
-
-        foreach (Transform child in transform)
-        {
-            if (child.tag == "Character")
-                _charactersList.Add(child.gameObject);
-        }
+    public int GetCharacterNumbers()
+    { 
+        return _charactersList.Count;
     }
 
     //Destroys a character and removes its dependencies
@@ -369,8 +358,7 @@ public class Characters : MonoBehaviour
         Destroy(character._UICharacterHeader.gameObject);                             //Remove header
         character._characterActivity._targetedActivity.ResetSelf();                   //Reset current activity 
         UIManager.instance._CharacterPanel.gameObject.SetActive(false);                 //Disable character panel
+        _charactersList.Remove(character.gameObject);
         Destroy(character.gameObject);
-
-        UpdateCharactersReference();
     }
 }

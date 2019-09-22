@@ -12,7 +12,7 @@ public class CharacterHeaderInstancier : MonoBehaviour
     private void Start()
     {
         _header = Instantiate(_UI_CharacterHeaderPrefab);
-        _header.transform.SetParent(GameObject.Find("Canvas").transform);           //Position in scene hierarchy
+        _header.transform.SetParent(GameObject.Find("Canvas").transform.Find("Characters").transform);           //Position in scene hierarchy
         _header.name = transform.parent.name + "_UICharacterHeader";                //Give identifiable name
 
         _header.GetComponent<UI_CharacterHeader>()._character = transform.parent.GetComponent<Character>();         //Provide headerScript a reference toward its character

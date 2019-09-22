@@ -81,5 +81,13 @@ public class UI_CharacterPanel : MonoBehaviour
     {
         Characters.instance.DestroyCharacter(_currentCharacter);
     }
+
+    //Re-generate a character and update its information
+    public void ReGenerateCharacter()
+    {
+        _currentCharacter.GenerateCharacterInfo();
+        _currentCharacter._UICharacterHeader.UpdateHeaderValues();
+        UpdateValues(_currentCharacter);
+    }
 }
 

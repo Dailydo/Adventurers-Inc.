@@ -35,4 +35,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //Spawns a character in the scene
+    public void SpawnCharacter()
+    {
+        Characters.instance.SpawnCharacters(1);
+    }
 }
