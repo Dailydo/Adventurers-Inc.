@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UI_CharacterCard : MonoBehaviour
+public class UI_CharacterPanel : MonoBehaviour
 {
     public GameObject _name_GO;          //Reference to the gameobjects containing the texts
     public GameObject _title_GO;
@@ -48,8 +48,8 @@ public class UI_CharacterCard : MonoBehaviour
         _charisma = _charisma_GO.GetComponent<TextMeshProUGUI>();
     }
 
-    //Replaces the values from the card with new ones
-    public void UpdateCardValues(Character character)
+    //Updates the panel values with character's
+    public void UpdateValues(Character character)
     {
         _name.text = character._name;
         _title.text = character._title;

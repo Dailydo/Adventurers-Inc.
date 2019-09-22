@@ -14,7 +14,7 @@ public class CharacterBody : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit) && (hit.transform == transform))
             {
-                UIManager.instance.LogClickedItem(hit.transform.parent.gameObject);
+                //UIManager.instance.LogClickedItem(hit.transform.parent.gameObject);
             }
         }
     }

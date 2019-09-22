@@ -2329,7 +2329,7 @@ MonoBehaviour:
   _characterPrefab: {fileID: 6014056513002767559, guid: 0395a7dc59837c5418a164ed75be583c,
     type: 3}
   _maxCharactersNumber: 4
-  _charactersToSpawn: 3
+  _charactersToSpawn: 2
 --- !u!43 &309631659
 Mesh:
   m_ObjectHideFlags: 0
@@ -3301,7 +3301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4396baaf493fc9b4abfe0b023d5abe56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CharacterCard: {fileID: 1348169132}
+  _CharacterPanel: {fileID: 1348169134}
   _currentSelectedObject: {fileID: 0}
 --- !u!1 &619306094
 GameObject:
@@ -8888,7 +8888,7 @@ GameObject:
   - component: {fileID: 1348169133}
   - component: {fileID: 1348169134}
   m_Layer: 5
-  m_Name: UI_CharacterCard
+  m_Name: UI_CharacterPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

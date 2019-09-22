@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 
     public static UIManager instance = null;       //singleton's instance
 
-    public GameObject _CharacterCard;
+    public UI_CharacterPanel _CharacterPanel;
 
     public GameObject _currentSelectedObject;
 
@@ -25,6 +25,13 @@ public class UIManager : MonoBehaviour
     public void LogClickedItem(GameObject item)
     {
         Debug.Log(item.name + " clicked.");
+        _currentSelectedObject = item;
+
+        if (item.tag == "Character")
+        {
+            _CharacterPanel.gameObject.SetActive(true);
+            _CharacterPanel.UpdateValues(item.GetComponent<Character>());
+        }
     }
 
 }

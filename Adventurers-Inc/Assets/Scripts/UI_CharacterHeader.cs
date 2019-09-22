@@ -5,11 +5,11 @@ using TMPro;
 
 public class UI_CharacterHeader : MonoBehaviour
 {
+    public Character _character = null;       //The character the header is attached to
+
     public GameObject _name_GO;          //Reference to the gameobjects containing the texts
     public GameObject _title_GO;
     public GameObject _level_GO;
-
-    public Character _character = null;       //The character the header is attached to
 
     //Quick access to text script
     private TextMeshProUGUI _name;
@@ -43,7 +43,7 @@ public class UI_CharacterHeader : MonoBehaviour
     //Signals the UI manager details on the character are requested
     public void CharacterDetailsRequested()
     {
-        Debug.Log("Display info through UI");
+        UIManager.instance.LogClickedItem(_character.gameObject);
     }
 }
 
