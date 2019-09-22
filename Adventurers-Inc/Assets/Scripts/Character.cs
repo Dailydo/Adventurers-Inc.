@@ -21,8 +21,8 @@ public class Character : MonoBehaviour
     public int _intelligence = 0;
     public int _charisma = 0;
 
-    private UI_CharacterHeader _UICharacterHeader;          //Reference to the header displayed over the character when selected 
-    private CharacterActivity _characterActivity;           //Reference to the character's activity script
+    public UI_CharacterHeader _UICharacterHeader;          //Reference to the header displayed over the character when selected 
+    public CharacterActivity _characterActivity;           //Reference to the character's activity script
 
 
     void Awake()
@@ -55,9 +55,6 @@ public class Character : MonoBehaviour
 
         //UI update
         UpdateCharacterHeader();
-
-        //Initial movement
-        _characterActivity.MoveToAvailableActivity();
     }
 
     //Update the characterCard with current values
@@ -68,5 +65,13 @@ public class Character : MonoBehaviour
             _UICharacterHeader = transform.Find("UIHeaderAnchorPoint").GetComponent<ClampUIOverObject>()._UICharacterHeader.GetComponent<UI_CharacterHeader>();
 
         _UICharacterHeader.UpdateHeaderValues(this);
+    }
+
+    //Returns a string identifying the character (name  + title)
+    public string GetCharacterDescription()
+    {
+        string result;
+        result = _name.ToString() + " " + _title.ToString();
+        return result;
     }
 }

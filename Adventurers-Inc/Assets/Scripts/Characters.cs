@@ -121,39 +121,53 @@ public class Characters : MonoBehaviour
 
     public void Start()
     {
-        //Check values
-        if (_charactersToSpawn > _maxCharactersNumber)
+        SpawnCharacters(_charactersToSpawn);
+    }
+
+    //------------------------------------------
+
+    //Spawns a number of characters in the scene
+    public void SpawnCharacters(int number)
+    {
+        //Cap characters number based on max allowed number
+        if (number > _maxCharactersNumber)
         {
-            _charactersToSpawn = _maxCharactersNumber;
+            number = _maxCharactersNumber;
             Debug.Log("Requested characters number exceeds scene's capacity");
         }
 
-        //Spawn characters
+        //Spawn characters 
         int i = 0;
-        while (i < _charactersToSpawn)
+        while (i < number)
         {
-            SpawnCharacter();
+            SpawnAndGenerateCharacter();
             i++;
         }
     }
 
-
     //Spawns a character on an available activity and generate it
-    public void SpawnCharacter()
+    public void SpawnAndGenerateCharacter()
     {
-        //Activity management
-        Activity spawnActivity = Activities.instance.GetRandomAvailableActivity();
-        spawnActivity.GetComponent<Activity>()._status = Activities.Status.Occupied;
-
-        //Character spawn
-        GameObject character = Instantiate(_characterPrefab, spawnActivity.transform.position, Quaternion.identity);
+        //Spawn the character and assign it to the "Characters" gameobject
+        GameObject character = Instantiate(_characterPrefab, Vector3.zero, Quaternion.identity);
         character.transform.parent = transform;
 
-        //Character's info generation
-        character.GetComponent<Character>().GenerateCharacter();
+        //Reference useful scripts
+        Character characterScript = character.GetComponent<Character>();
+        CharacterActivity characterActivity = characterScript._characterActivity;
 
-        //Character's activity link
-        character.GetComponent<CharacterActivity>()._targetedActivity = spawnActivity;
+        //Find, reserve and assign an available activity
+        Activity spawnActivity = Activities.instance.GetRandomAvailableActivity();
+        character.transform.position = spawnActivity.transform.position;
+        characterActivity._targetedActivity = spawnActivity;
+        spawnActivity.GetComponent<Activity>()._status = Activities.Status.Occupied;
+
+        //Generate character info
+        characterScript.GenerateCharacter();
+        character.name = "Character_" + characterScript.GetCharacterDescription();
+
+        //Initiate movement
+        characterActivity.MoveToAvailableActivity();
     }
 
     //Returns a character (informations, not instantiation)

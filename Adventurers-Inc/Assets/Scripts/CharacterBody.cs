@@ -12,7 +12,7 @@ public class CharacterBody : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit) && (hit.transform.tag == "Character"))
+            if (Physics.Raycast(ray, out hit) && (hit.transform == transform))
             {
                 UIManager.instance.CharacterClicked(hit.transform.parent.gameObject);
             }

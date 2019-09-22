@@ -20,7 +20,7 @@ MonoBehaviour:
   - name_: Elton
   - name_: Marvin
   - name_: Maverick
-  - name_: Eiikichi
+  - name_: Rolph
   - name_: Mac Bones
   - name_: Simon
   - name_: Martin
@@ -31,7 +31,7 @@ MonoBehaviour:
   - name_: Brick
   - name_: Roland
   - name_: Jack
-  - name_: "Moredeca\xEF"
+  - name_: "Mordeca\xEF"
   - name_: Roberto
   human_female:
   - name_: Britta
@@ -87,7 +87,7 @@ MonoBehaviour:
   - name_: Faunra
   - name_: Oparal
   - name_: Soumral
-  - name_: Yalandhadra
+  - name_: Yalandhra
   elf_neutral:
   - name_: Tesserth
   - name_: Merisiel

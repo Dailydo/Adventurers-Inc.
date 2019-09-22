@@ -24,8 +24,7 @@ public class UIManager : MonoBehaviour
     //Do stuff when a character is clicked onto
     public void CharacterClicked(GameObject character)
     {
-        Character characterScript = character.GetComponent<Character>();
-        characterScript.GenerateCharacter();
+        Debug.Log(character.name + " clicked.");
     }
 
 }

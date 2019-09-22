@@ -29,6 +29,8 @@ public class UI_CharacterHeader : MonoBehaviour
         _name.text = character._name;
         _title.text = character._title;
         _level.text = character._level.ToString();
+
+        gameObject.name = "CharacterHeader_" + character.GetCharacterDescription();
     }
 }
 
