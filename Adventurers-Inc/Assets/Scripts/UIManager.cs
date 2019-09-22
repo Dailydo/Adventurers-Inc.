@@ -21,10 +21,10 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    //Do stuff when a character is clicked onto
-    public void CharacterClicked(GameObject character)
+    //What to do when an item is clicked onto
+    public void LogClickedItem(GameObject item)
     {
-        Debug.Log(character.name + " clicked.");
+        Debug.Log(item.name + " clicked.");
     }
 
 }

@@ -9,6 +9,8 @@ public class UI_CharacterHeader : MonoBehaviour
     public GameObject _title_GO;
     public GameObject _level_GO;
 
+    public Character _character = null;       //The character the header is attached to
+
     //Quick access to text script
     private TextMeshProUGUI _name;
     private TextMeshProUGUI _title;
@@ -23,14 +25,25 @@ public class UI_CharacterHeader : MonoBehaviour
         _level = _level_GO.GetComponent<TextMeshProUGUI>();
     }
 
-    //Replaces the values from the card with new ones
-    public void UpdateHeaderValues(Character character)
+    private void Start()
     {
-        _name.text = character._name;
-        _title.text = character._title;
-        _level.text = character._level.ToString();
+        UpdateHeaderValues();
+    }
 
-        gameObject.name = "CharacterHeader_" + character.GetCharacterDescription();
+    //Updates card values from _character's data
+    public void UpdateHeaderValues()
+    {
+        _name.text = _character._name;
+        _title.text = _character._title;
+        _level.text = _character._level.ToString();
+
+        gameObject.name = "CharacterHeader_" + _character.GetCharacterDescription();
+    }
+
+    //Signals the UI manager details on the character are requested
+    public void CharacterDetailsRequested()
+    {
+        Debug.Log("Display info through UI");
     }
 }
 

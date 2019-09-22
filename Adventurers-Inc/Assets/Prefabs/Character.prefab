@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1008165534}
   - component: {fileID: 1008165533}
   - component: {fileID: 1008165532}
-  - component: {fileID: 1008165531}
+  - component: {fileID: 2624048861928209860}
   m_Layer: 0
   m_Name: UIHeaderAnchorPoint
   m_TagString: Untagged
@@ -93,7 +93,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1008165531
+--- !u!114 &2624048861928209860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,8 @@ MonoBehaviour:
   _UI_CharacterHeaderPrefab: {fileID: 5208824854445759653, guid: 425bed88c8f36e847869f501ed66e082,
     type: 3}
   _offset: {x: 0, y: 0, z: 0.5}
-  _UICharacterHeader: {fileID: 0}
+  _header: {fileID: 0}
+  _headerScript: {fileID: 0}
 --- !u!1 &6014056513002767559
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ GameObject:
   - component: {fileID: 2952764576350557167}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +171,7 @@ MonoBehaviour:
   _dexterity: 0
   _intelligence: 0
   _charisma: 0
-  _UICharacterHeader: {fileID: 0}
+  _UIHeaderAnchorPoint: {fileID: 1008165529}
   _characterActivity: {fileID: 0}
 --- !u!195 &7408284298416366099
 NavMeshAgent:

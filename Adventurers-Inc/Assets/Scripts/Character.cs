@@ -31,8 +31,17 @@ public class Character : MonoBehaviour
         _characterActivity = gameObject.GetComponent<CharacterActivity>();
     }
 
+    private void Start()
+    {
+        GenerateCharacterInfo();
+        name = "Character_" + GetCharacterDescription();
+
+        SetCharacterOnActivity();
+        _characterActivity.MoveToAvailableActivity();
+    }
+
     //Generates a character with randomized traits
-    public void GenerateCharacter()
+    public void GenerateCharacterInfo()
     {
         //Character's info generation and assignation 
         Characters.CharacterInfo characterInfo = Characters.instance.GenerateRandomCharacterInfo();
@@ -52,19 +61,24 @@ public class Character : MonoBehaviour
         _dexterity = characterInfo.dexterity;
         _intelligence = characterInfo.intelligence;
         _charisma = characterInfo.charisma;
+    }
 
-        //UI update
-        UpdateCharacterHeader();
+    //Sets the character on an initial activity (to be used at instantiation)
+    private void SetCharacterOnActivity()
+    {
+        Activity spawnActivity = Activities.instance.GetRandomAvailableActivity();
+        transform.position = spawnActivity.transform.position;
+        _characterActivity._targetedActivity = spawnActivity;
+        spawnActivity.GetComponent<Activity>()._status = Activities.Status.Occupied;
     }
 
     //Update the characterCard with current values
     public void UpdateCharacterHeader()
     {
-        //Reference the character header on first use
-        if (_UICharacterHeader == null)
-            _UICharacterHeader = transform.Find("UIHeaderAnchorPoint").GetComponent<ClampUIOverObject>()._UICharacterHeader.GetComponent<UI_CharacterHeader>();
-
-        _UICharacterHeader.UpdateHeaderValues(this);
+        if (_UICharacterHeader != null)
+            _UICharacterHeader.UpdateHeaderValues();
+        else
+            Debug.Log("No referenced header for " + GetCharacterDescription());
     }
 
     //Returns a string identifying the character (name  + title)

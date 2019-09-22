@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Characters : MonoBehaviour
 {
-
+    //SIINGLETON------------------------------
     public static Characters instance = null;       //singleton's instance
 
+    //CUSTOM CLASSES & STRUCTS----------------
     //A class containing leveling information
     [System.Serializable]
     public class LevelInfo
@@ -97,6 +98,8 @@ public class Characters : MonoBehaviour
     public enum Race { Unset, Human, Dwarf, Elf, Orc, Halfling, Troll, StonePerson };
     public enum Class { Unset, Warrior, Mage, Rogue, Hunter, Gunslinger, Paladin, Merchant, Seer };
 
+    //VARIABLES-------------------------------
+
     public SO_Race[] _races;           //References the races available for character generation
     public Titles _titlesContainer;
     public Names _namesContainer;
@@ -109,6 +112,9 @@ public class Characters : MonoBehaviour
     public int _maxCharactersNumber = 2;            //Character generation cap so they don't exceed the scene's capacity
     public int _charactersToSpawn = 1;              //Number of characters to spawn on play
 
+
+
+    //BASE METHODS-----------------------------
 
     public void Awake()
     {
@@ -124,7 +130,8 @@ public class Characters : MonoBehaviour
         SpawnCharacters(_charactersToSpawn);
     }
 
-    //------------------------------------------
+
+    //CLASS METHODS-----------------------------
 
     //Spawns a number of characters in the scene
     public void SpawnCharacters(int number)
@@ -151,23 +158,6 @@ public class Characters : MonoBehaviour
         //Spawn the character and assign it to the "Characters" gameobject
         GameObject character = Instantiate(_characterPrefab, Vector3.zero, Quaternion.identity);
         character.transform.parent = transform;
-
-        //Reference useful scripts
-        Character characterScript = character.GetComponent<Character>();
-        CharacterActivity characterActivity = characterScript._characterActivity;
-
-        //Find, reserve and assign an available activity
-        Activity spawnActivity = Activities.instance.GetRandomAvailableActivity();
-        character.transform.position = spawnActivity.transform.position;
-        characterActivity._targetedActivity = spawnActivity;
-        spawnActivity.GetComponent<Activity>()._status = Activities.Status.Occupied;
-
-        //Generate character info
-        characterScript.GenerateCharacter();
-        character.name = "Character_" + characterScript.GetCharacterDescription();
-
-        //Initiate movement
-        characterActivity.MoveToAvailableActivity();
     }
 
     //Returns a character (informations, not instantiation)
