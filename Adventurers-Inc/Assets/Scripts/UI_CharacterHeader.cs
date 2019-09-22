@@ -28,6 +28,7 @@ public class UI_CharacterHeader : MonoBehaviour
     private void Start()
     {
         UpdateHeaderValues();
+        _character._UICharacterHeader = this;
     }
 
     //Updates card values from _character's data

@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
         if (item.tag == "Character")
         {
             _CharacterPanel.gameObject.SetActive(true);
+            _CharacterPanel._currentCharacter = item.GetComponent<Character>();
             _CharacterPanel.UpdateValues(item.GetComponent<Character>());
         }
     }

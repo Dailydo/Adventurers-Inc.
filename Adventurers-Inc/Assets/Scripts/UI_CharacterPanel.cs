@@ -5,6 +5,8 @@ using TMPro;
 
 public class UI_CharacterPanel : MonoBehaviour
 {
+    public Character _currentCharacter;     //The character whose information are currently displayed in the panel
+
     public GameObject _name_GO;          //Reference to the gameobjects containing the texts
     public GameObject _title_GO;
 
@@ -48,6 +50,11 @@ public class UI_CharacterPanel : MonoBehaviour
         _charisma = _charisma_GO.GetComponent<TextMeshProUGUI>();
     }
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     //Updates the panel values with character's
     public void UpdateValues(Character character)
     {
@@ -61,6 +68,18 @@ public class UI_CharacterPanel : MonoBehaviour
         _dexterity.text = character._dexterity.ToString();
         _intelligence.text = character._intelligence.ToString();
         _charisma.text = character._charisma.ToString();
+    }
+
+    //Disable the character panel
+    public void DisablePanel()
+    {
+        gameObject.SetActive(false);
+    }
+
+    //Destroys the currently selected character
+    public void DestroyCurrentCharacter()
+    {
+        Characters.instance.DestroyCharacter(_currentCharacter);
     }
 }
 

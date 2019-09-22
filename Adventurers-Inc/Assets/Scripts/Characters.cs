@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Characters : MonoBehaviour
 {
-    //SIINGLETON------------------------------
+
+    //SINGLETON------------------------------
     public static Characters instance = null;       //singleton's instance
 
     //CUSTOM CLASSES & STRUCTS----------------
@@ -98,6 +99,7 @@ public class Characters : MonoBehaviour
     public enum Race { Unset, Human, Dwarf, Elf, Orc, Halfling, Troll, StonePerson };
     public enum Class { Unset, Warrior, Mage, Rogue, Hunter, Gunslinger, Paladin, Merchant, Seer };
 
+
     //VARIABLES-------------------------------
 
     public SO_Race[] _races;           //References the races available for character generation
@@ -107,9 +109,9 @@ public class Characters : MonoBehaviour
     public LevelInfo_Classes _classesLevelInfoContainer;
     //Add gameplay traits at some point...
 
-    public List<GameObject> _charactersList;        //List of all the characters currently present in the scene
     public GameObject _characterPrefab;
     public int _maxCharactersNumber = 2;            //Character generation cap so they don't exceed the scene's capacity
+    public List<GameObject> _charactersList;        //List of all the characters currently present in the scene
     public int _charactersToSpawn = 1;              //Number of characters to spawn on play
 
 
@@ -128,6 +130,7 @@ public class Characters : MonoBehaviour
     public void Start()
     {
         SpawnCharacters(_charactersToSpawn);
+        UpdateCharactersReference();
     }
 
 
@@ -346,5 +349,28 @@ public class Characters : MonoBehaviour
     {
         string title = _titlesContainer.Entities[Random.Range(0, _titlesContainer.Entities.Count)].title;
         return title;
+    }
+
+    //Updates the list containing the number of characters
+    public void UpdateCharactersReference()
+    {
+        _charactersList.Clear();
+
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "Character")
+                _charactersList.Add(child.gameObject);
+        }
+    }
+
+    //Destroys a character and removes its dependencies
+    public void DestroyCharacter(Character character)
+    {
+        Destroy(character._UICharacterHeader.gameObject);                             //Remove header
+        character._characterActivity._targetedActivity.ResetSelf();                   //Reset current activity 
+        UIManager.instance._CharacterPanel.gameObject.SetActive(false);                 //Disable character panel
+        Destroy(character.gameObject);
+
+        UpdateCharactersReference();
     }
 }
